@@ -1,0 +1,45 @@
+.fondo{
+    background-color: #ffd46c;
+    height: 100vh;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.form{
+    width: 60vh;
+    height: 60vh;
+  
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    
+}
+.logo{
+    width: 20vh;
+    height: 20vh;
+    background-image: url('../../../logo.png');
+    background-color: white;
+    background-size: cover;
+    border: black solid 2px;
+    border-radius: 50%;
+}
+.inputs{
+    margin: 10px;
+    
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.titulo{
+    margin: 20px;
+}
+.boton{
+    padding-bottom: 20px;
+}
