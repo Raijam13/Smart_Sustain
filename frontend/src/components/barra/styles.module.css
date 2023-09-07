@@ -1,0 +1,13 @@
+.fondo{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 100%;
+    background-color: orange;
+    border: black solid 5px;
+}
+.home{
+    width: 100px;
+    height: 100px;
+    background-image: url('');
+}
