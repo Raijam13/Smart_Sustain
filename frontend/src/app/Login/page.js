@@ -22,6 +22,7 @@ const login = () => {
                 
                 <div className={styles.boton}>
                      <Button variant="warning">Warning</Button>{' '}
+                     
                 </div>
             </div>
         </div>

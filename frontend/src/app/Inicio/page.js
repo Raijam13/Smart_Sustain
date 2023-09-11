@@ -1,17 +1,16 @@
 'use client';
-
-import barra from '../../components/barra/barra.jsx'
 import styles from './styles.module.css'
+import React from 'react';
+import Barra from '@/components/barra/barra';
 
 const inicio = () => {
     return( 
         <div className={styles.fondo}>
         
-            <barra></barra>
-
-            <div className={styles.contenido}>
-
-            </div>
+        <Barra></Barra>
+        <div></div>
+            
+           
 
         </div>
 
