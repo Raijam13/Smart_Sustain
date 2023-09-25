@@ -1,0 +1,41 @@
+.fondo{
+    background-color: #ffd46c;
+    height: 100vh;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.cointainer{
+    width: 70vh;
+    height: 70vh;
+
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    
+}
+
+.columna{
+    display: flex;
+    flex-direction: row;    
+    margin: 5px 0;
+}
+.items{
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.label{
+    margin: 5px 0;
+}
+
+#inputs{
+    border: 2px solid;
+}
