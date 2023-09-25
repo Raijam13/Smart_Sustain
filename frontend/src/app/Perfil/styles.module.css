@@ -1,0 +1,64 @@
+.container{
+    background-color: #ffd46c;
+    height: 100vh;
+}
+
+
+.col{
+    font-size: 2rem;
+    font-weight: bold;
+    align-items: flex-start; /* Centra verticalmente el contenido en la parte superior */
+    display: flex;
+    text-align: left;
+}
+
+.arrow{
+    font-size: 2rem;
+    margin-left: 2rem;
+    font-weight: bold;
+    align-items: flex-start; /* Centra verticalmente el contenido en la parte superior */
+    display: flex;
+    text-align: left;
+    max-width: 50px;
+    transition: color 0.3s;
+}
+
+.arrow:hover {
+    color: #D35237
+    ; 
+  }
+.col2{
+    margin-top: 4rem;
+    align-items: center; /*Centra todo el texto en la parte superior*/ 
+    justify-content: center; /*Centra todo el texto al medio de la pantalla*/
+    display: flex; /*Necesita esto para que funcionen los anteriores*/
+}
+
+.col3{
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    max-width: 550px;
+    background-color:burlywood;
+    border-radius: 10px;
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.col4{
+    margin-top: 5rem;
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    margin-left: auto;
+}
+
+.col5{
+    margin-top: 5rem;
+    display: flex;
+    max-width: fit-content;
+    margin-right: auto;
+}
+
