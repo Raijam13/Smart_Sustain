@@ -23,7 +23,7 @@
 .columna{
     display: flex;
     flex-direction: row;    
-    margin: 5px 0;
+    margin: 20px 0;
 }
 .items{
     margin: 0 10px;
@@ -38,4 +38,12 @@
 
 #inputs{
     border: 2px solid;
+}
+
+.space{
+    width: auto;
+    height: 50px;
+}
+.boton{
+    margin: 0px 0;
 }

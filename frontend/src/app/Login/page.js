@@ -15,7 +15,7 @@ const login = () => {
                 </div>
                 <div className={styles.logo}></div>
                 <div className={styles.container}>  
-                      <Form.Control type="text" placeholder="Usuario" className={styles.inputs} />
+                      <Form.Control type="text" placeholder="Correo" className={styles.inputs} />
 
                       <Form.Control type="text" placeholder="Contraseña" className={styles.inputs} />
                 </div>

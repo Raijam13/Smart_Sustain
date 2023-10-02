@@ -15,18 +15,6 @@ const Registro = () => {
 
             <div className={styles.columna}>
                  <div className={styles.items}>
-                     <div className={styles.label}><label>Usuario</label> </div>
-                     <Form.Control id='inputs' type="text" size="sm" placeholder="" className={styles.inputs} />
-                 </div>
-
-                <div className={styles.items}>
-                 <div className={styles.label}><label>Contraseña</label> </div>
-                    <Form.Control type="text" size="sm" placeholder="" className={styles.inputs} />
-                </div>
-            </div>
-
-            <div className={styles.columna}>
-                 <div className={styles.items}>
                      <div className={styles.label}><label>Nombres</label> </div>
                      <Form.Control id='inputs' type="text" size="sm" placeholder="" className={styles.inputs} />
                  </div>
@@ -36,7 +24,28 @@ const Registro = () => {
                     <Form.Control type="text" size="sm" placeholder="" className={styles.inputs} />
                 </div>
             </div>
+
+            <div className={styles.columna}>
+                 <div className={styles.items}>
+                     <div className={styles.label}><label>Correo</label> </div>
+                     <Form.Control id='inputs' type="text" size="sm" placeholder="" className={styles.inputs} />
+                 </div>
+
+                <div className={styles.items}>
+                 <div className={styles.label}><label>Contraseña</label> </div>
+                    <Form.Control type="text" size="sm" placeholder="" className={styles.inputs} />
+                </div>
+            </div>
             
+            <div className={styles.space}>
+
+            </div>
+
+            <div className={styles.boton}>
+                <Button variant="warning">Registrar</Button>{' '}
+                
+            </div>
+
          </div>
         </div>
 
