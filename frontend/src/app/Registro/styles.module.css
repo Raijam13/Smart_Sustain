@@ -23,7 +23,7 @@
 .columna{
     display: flex;
     flex-direction: row;    
-    margin: 20px 0;
+    margin: 10px 0;
 }
 .items{
     margin: 0 10px;
