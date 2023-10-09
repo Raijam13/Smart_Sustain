@@ -8,11 +8,11 @@ const barra = () => {
         <div  className={styles.fondo}>
 
          
-            <div className={styles.home}></div>  
-            <div className={styles.tarjet}></div>  
-            <div className={styles.stats}></div>   
-            <div className={styles.fam}></div>   
-                
+            <div className={styles.nav}><a href="/Inicio">Inicio</a></div> 
+            <div className={styles.nav}><a href="/Objetivos">Objetivos</a></div>  
+            <div className={styles.nav}><a href="/Estadisticas">Estadisticas</a></div>  
+            <div className={styles.nav}><a href="/Familia">Familia</a></div>
+            <div className={styles.nav}><a href="/Placeholder">Placeholder</a></div>  
         </div>
     );
 };
