@@ -12,7 +12,7 @@ const barra = () => {
             <div className={styles.nav}><a href="/Objetivos">Objetivos</a></div>  
             <div className={styles.nav}><a href="/Estadisticas">Estadisticas</a></div>  
             <div className={styles.nav}><a href="/Familia">Familia</a></div>
-            <div className={styles.nav}><a href="/Placeholder">Placeholder</a></div>  
+            <div className={styles.nav}><a href="/Movimientos">Movimientos</a></div>  
         </div>
     );
 };
