@@ -1,10 +1,12 @@
-'use client';
+
 import styles from './styles.module.css'
 import React from 'react';
 import Barra from '../../components/barra/barra';
 import MovApi from '../../api/movimientos.js';
 import 'bootstrap/dist/css/bootstrap.css'
-    
+let total = 0  
+let list  = []
+
 const peticion = async function(){
     const retorno = []
     const response = await fetch ('http://127.0.0.1:8000/smartsustain/movimientos',
@@ -12,11 +14,11 @@ const peticion = async function(){
         cache: "no-store",
         method: 'POST',
         body: JSON.stringify({
-            usuario: 2
+            usuario: 1
         })
     })
     const data = await response.json();
-    const list = data.lista
+    list = data.lista
     list.forEach(element => {
         let persona = element.usuario
         let categoria = element.categoria
@@ -33,24 +35,31 @@ const peticion = async function(){
     return retorno
 }
 
-const inicio = () => {
+const balance = function(){
+    total = 0
+    list.forEach(element => {
+        let cantidad = element.cantidad
+        total += cantidad
+    });
+    return total
+}
+
+const movimientos = () => {
     
-    let tabla = [<tr><td>Comida</td><td>30</td><td>Almuerzo en restaurante</td><td>05/10 13:00</td></tr>,
-                <tr><td>Transporte</td><td>5</td><td>Pasajes</td><td>05/10 11:00</td></tr>,
-                <tr><td>Entretenimiento</td><td>15</td><td>Suscripcion netflix</td><td>03/10 22:18</td></tr>]
+    let tabla = peticion()
     return( 
         <div className={styles.fondo}>
         
         <Barra/>
         <div><h1 className={`${styles.titulo} row`}>Movimientos</h1>
         <h2>Gastos netos este mes</h2>
-        <p><b>$123</b></p>
+        <p><b>${balance()}</b></p>
         <h2>Lista de movimientos</h2>
         <table className={styles.tabla}>
             <tr>
+                <th>Persona</th>
                 <th>Categoria</th>
                 <th>Cantidad</th>
-                <th>Descripcion</th>
                 <th>Fecha</th>
             </tr>
             {tabla}
@@ -61,4 +70,4 @@ const inicio = () => {
     )
 }
 
-export default inicio;
+export default movimientos;
