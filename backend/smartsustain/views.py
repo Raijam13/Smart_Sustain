@@ -4,7 +4,7 @@ from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
-wrongtype = "Tipo de petición no soportado"
+wrongtype = "Tipo de petición no soportado para la operación"
 
 @csrf_exempt
 def obtenermovimientos(request):
@@ -42,6 +42,26 @@ def validarlogin(request):
                 break
         return HttpResponse(json.dumps(resp))
 
+    else:
+        return HttpResponse(wrongtype)
+    
+@csrf_exempt
+def userregister(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        name = data["nombre"]
+        surname = data["apellido"]
+        mail = data["email"]
+        passw = data["password"]
+        UsuariosQuerySet = Usuario.objects.all()
+        for u in UsuariosQuerySet:
+            if u.email == mail:
+                resp = {"resp" : "email_taken"}
+                return HttpResponse(json.dumps(resp))
+        usuario = Usuario(nombre = name, apellido = surname, email = mail, password = passw)
+        usuario.save()
+        resp = {"resp" : "register_successful"}
+        return HttpResponse(json.dumps(resp))
     else:
         return HttpResponse(wrongtype)
     

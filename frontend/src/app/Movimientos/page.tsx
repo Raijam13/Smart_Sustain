@@ -4,7 +4,9 @@ import React from 'react';
 import Barra from '../../components/barra/barra';
 import MovApi from '../../api/movimientos.js';
 import 'bootstrap/dist/css/bootstrap.css'
-    
+let total = 0  
+let list  = []
+
 const peticion = async function(){
     const retorno = []
     const response = await fetch ('http://127.0.0.1:8000/smartsustain/movimientos',
@@ -12,11 +14,11 @@ const peticion = async function(){
         cache: "no-store",
         method: 'POST',
         body: JSON.stringify({
-            usuario: 2
+            usuario: 1
         })
     })
     const data = await response.json();
-    const list = data.lista
+    list = data.lista
     list.forEach(element => {
         let persona = element.usuario
         let categoria = element.categoria
@@ -33,6 +35,14 @@ const peticion = async function(){
     return retorno
 }
 
+const balance = function(){
+    total = 0
+    list.forEach(element => {
+        let cantidad = element.cantidad
+        total += cantidad
+    });
+    return total
+}
 
 const movimientos = () => {
     
@@ -43,7 +53,7 @@ const movimientos = () => {
         <Barra/>
         <div><h1 className={`${styles.titulo} row`}>Movimientos</h1>
         <h2>Gastos netos este mes</h2>
-        <p><b>$123</b></p>
+        <p><b>${balance()}</b></p>
         <h2>Lista de movimientos</h2>
         <table className={styles.tabla}>
             <tr>
