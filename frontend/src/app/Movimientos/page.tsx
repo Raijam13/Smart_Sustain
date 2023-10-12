@@ -6,8 +6,9 @@ import MovApi from '../../api/movimientos.js';
     
 const peticion = async function(){
     const retorno = []
-    const response = await fetch (`http://127.0.0.1:8000/smartsustain/movimientos`,
+    const response = await fetch ('http://127.0.0.1:8000/smartsustain/movimientos',
     {
+        cache: "no-store",
         method: 'POST',
         body: JSON.stringify({
             usuario: 2
