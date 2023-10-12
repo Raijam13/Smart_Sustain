@@ -42,7 +42,7 @@ const Registro = () => {
             </div>
 
             <div className={styles.boton}>
-                <Button variant="warning" href='/Login' >Registrar</Button>{' '}
+                <Button variant="warning">Registrar</Button>{' '}
                 
             </div>
 
