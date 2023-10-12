@@ -1,9 +1,22 @@
-import Image from 'next/image'
+'use client';
 import styles from './page.module.css'
-export default function Home() {
-  return (
-    <main className={styles.main}>
-         si
-    </main>
-  )
+import React from 'react';
+import Barra from '../components/barra/barra';
+import 'bootstrap/dist/css/bootstrap.css'
+
+const inicio = () => {
+    return( 
+        <div className={`${styles.fondo} row`}>
+        
+        <Barra></Barra>
+        <div></div>
+            
+           
+
+        </div>
+
+    
+    )
 }
+
+export default inicio;

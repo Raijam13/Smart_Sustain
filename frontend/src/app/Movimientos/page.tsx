@@ -3,6 +3,7 @@ import styles from './styles.module.css'
 import React from 'react';
 import Barra from '../../components/barra/barra';
 import MovApi from '../../api/movimientos.js';
+import 'bootstrap/dist/css/bootstrap.css'
     
 const peticion = async function(){
     const retorno = []
@@ -39,8 +40,8 @@ const movimientos = () => {
     return( 
         <div className={styles.fondo}>
         
-        <Barra></Barra>
-        <div><h1 className={styles.titulo}>Movimientos</h1>
+        <Barra/>
+        <div><h1 className={`${styles.titulo} row`}>Movimientos</h1>
         <h2>Gastos netos este mes</h2>
         <p><b>$123</b></p>
         <h2>Lista de movimientos</h2>

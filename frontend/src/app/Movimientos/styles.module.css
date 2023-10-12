@@ -1,9 +1,7 @@
 .fondo{
-    height: 100vh;
+    height: 100%;
     width: auto;
     background-color: rgb(255, 221, 158);
-    display: flex;
-    flex-direction: row;
    
 }
 
