@@ -1,32 +1,22 @@
 .fondo{
-    
-    width: 200px;
-    height: auto;
+
+    height: 7.5%;
     background-color: orange;
-    border: black solid 5px;
-    display: flex;
-    flex-direction: column;
     text-align: center;
 }
 
 .nav{
-    padding-top: 7.5%;
-    padding-bottom: 7.5%;    
+    padding-top: 0.8%;
+    color: black;
+    text-decoration: none;  
 }
 
-.nav a{
-    color: black;
-    text-decoration: none;
-}
 
 .nav:hover{  
     background-color: rgb(218, 84, 1);
 }
 
 .nav:active{
-    background-color: rgb(218, 59, 1);
-}
-
-.nav a:active{
     color: white;
+    background-color: rgb(218, 59, 1);
 }
