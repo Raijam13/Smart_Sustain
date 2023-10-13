@@ -37,7 +37,7 @@ class Movimiento(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     #categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     cantidad = models.FloatField()
-    fecha = models.DateTimeField()
+    fecha = models.CharField(max_length=20)
 
     def __str__(self) :
         return self.usuario.nombre + " " + self.usuario.apellido + " " + str(self.fecha)
