@@ -8,10 +8,29 @@ import Container from 'react-bootstrap/Container';
 import Image from 'next/image';
 import logo from "../Imagenes/logo.jpg";
 import background from "../Imagenes/background.jpg"
-
+import Link from 'next/link';
 
 
 const login = () => {
+    /*
+    const [correo, setCorreo] = useState('');
+    const [contra, setContra] = useState('');
+
+
+    const isEmpty = (str) => {
+        return str.trim() === '';
+      };
+
+    const handleValidar = () => {
+        if (isEmpty(correo) || isEmpty(contra)) {
+          alert('Porfavor ingrese unas credenciales validas');
+        } else {
+          // Realiza la lógica de validación o cualquier otra acción aquí
+          console.log('Correo:', correo);
+          console.log('Contraseña:', contra);
+        }
+      };
+    */
     return(
         <Container fluid className={Styles.Login}>
             <Image
@@ -50,7 +69,7 @@ const login = () => {
                         <p>¿No estás registrado?</p>
                     </Col>
                     <Col md={{ span: 0, offset: 0 }}>
-                        <Button type="submit" class= {Styles.registrarse}>Registrarme</Button>
+                        <Link href='/Registro'> <Button type="submit" class= {Styles.registrarse}>Registrarme</Button></Link>
                     </Col>
                 </Col>
             </Row>
