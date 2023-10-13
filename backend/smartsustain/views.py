@@ -134,16 +134,40 @@ def eliminarcuenta(request):
     else:
         return HttpResponse(wrongtype)
     
-@csrf_exempt
+@csrf_exempt    
 def crearmovimiento(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        user = data["usuario"]
+        user = Usuario.objects.filter(pk=data["usuario"])[0]
         cant = data["cantidad"]
         date = data["fecha"]
-        mov = Movimiento(usuario = user, cantodad = cant, fecha = date)
+        mov = Movimiento(usuario = user, cantidad = cant, fecha = date)
         mov.save()
         resp = {"resp" : "creation_ok"}
+        return HttpResponse(json.dumps(resp))
+    else:
+        return HttpResponse(wrongtype)
+    
+@csrf_exempt
+def modmovimiento(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        id = data["id"]
+        cant = data["cantidad"]
+        date = data["fecha"]
+        Movimiento.objects.filter(pk=id).update(cantidad = cant, fecha = date)
+        resp = {"resp" : "update_ok"}
+        return HttpResponse(json.dumps(resp))
+    else:
+        return HttpResponse(wrongtype)
+    
+@csrf_exempt
+def borrarmovimiento(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        id = data["id"]
+        Movimiento.objects.filter(pk=id).delete()
+        resp = {"resp" : "delete_ok"}
         return HttpResponse(json.dumps(resp))
     else:
         return HttpResponse(wrongtype)
