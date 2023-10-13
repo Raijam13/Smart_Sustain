@@ -133,3 +133,17 @@ def eliminarcuenta(request):
         return HttpResponse(json.dumps(resp))
     else:
         return HttpResponse(wrongtype)
+    
+@csrf_exempt
+def crearmovimiento(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        user = data["usuario"]
+        cant = data["cantidad"]
+        date = data["fecha"]
+        mov = Movimiento(usuario = user, cantodad = cant, fecha = date)
+        mov.save()
+        resp = {"resp" : "creation_ok"}
+        return HttpResponse(json.dumps(resp))
+    else:
+        return HttpResponse(wrongtype)
