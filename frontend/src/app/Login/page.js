@@ -9,10 +9,12 @@ import Image from 'next/image';
 import logo from "../Imagenes/logo.jpg";
 import background from "../Imagenes/background.jpg"
 import Link from 'next/link';
+import DAO from '../../patrones/DAO.ts' 
+import { useState, useEffect } from 'react';
 
 
 const login = () => {
-    /*
+    
     const [correo, setCorreo] = useState('');
     const [contra, setContra] = useState('');
 
@@ -29,8 +31,11 @@ const login = () => {
           console.log('Correo:', correo);
           console.log('Contraseña:', contra);
         }
-      };
-    */
+      };    
+
+
+
+
     return(
         <Container fluid className={Styles.Login}>
             <Image
@@ -53,23 +58,23 @@ const login = () => {
                     </Col>
                     <Col >  
                     <Row>
-                            <input type="text" className={Styles.form_control} name="correo" id="login" placeholder="Correo electrónico:" />
+                            <input type="text" className={Styles.form_control} name="correo" id="login" placeholder="Correo electrónico:" onChange={(e) => setCorreo(e.target.value)} />
                         </Row>
                         <Row>
-                            <input type="password" className={Styles.form_control} name="contraseña" id="login" placeholder="Contraseña:" />
+                            <input type="password" className={Styles.form_control} name="contraseña" id="login" placeholder="Contraseña:"  onChange={(e) => setContra(e.target.value)}/>
                         </Row>
                     </Col>
                     <Col  className={Styles.text_help1}>
                         <p>¿Olvidaste tu contraseña?</p>
                     </Col>
                     <Col md={{ span: 0, offset: 0 }}>
-                        <Button type="submit" className= {Styles.ingresar}>Iniciar sesión</Button>
+                        <Button type="submit" className= {Styles.ingresar}  onClick={handleValidar}>Iniciar sesión</Button>
                     </Col>
                     <Col  className={Styles.text_help2}>
                         <p>¿No estás registrado?</p>
                     </Col>
                     <Col md={{ span: 0, offset: 0 }}>
-                        <Link href='/Registro'> <Button type="submit" className= {Styles.registrarse}>Registrarme</Button></Link>
+                        <Link href='/Registro'> <Button type="submit" className= {Styles.registrarse} >Registrarme</Button></Link>
                     </Col>
                 </Col>
             </Row>
