@@ -16,7 +16,7 @@ def obtenermovimientos(request):
         for m in MovimientosQuerySet:
             lista.append({
                 "usuario" : m.usuario.nombre,
-                "categoria" : m.categoria.nombre,
+                "categoria" : "N/A",
                 "cantidad" : m.cantidad,
                 "fecha" : str(m.fecha)
             })
@@ -32,11 +32,13 @@ def validarlogin(request):
         email = data["email"]
         passw = data["password"]
         UsuariosQuerySet = Usuario.objects.all()
-        resp = {"resp" : "no_user"}
+        resp = {"resp" : "no_user",
+                "id" : "N/A"}
         for u in UsuariosQuerySet:
             if u.email == email:
                 if u.password == passw:
                     resp["resp"] = "login_ok"
+                    resp["id"] = u.pk
                 else:
                     resp["resp"] = "wrong_password"
                 break
@@ -65,3 +67,69 @@ def userregister(request):
     else:
         return HttpResponse(wrongtype)
     
+@csrf_exempt
+def modnombres(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        id = data["id"]
+        nombre = data["nombre"]
+        Usuario.objects.filter(pk=id).update(nombre=nombre)
+        resp = {
+            "resp" : "name_updated"
+        }
+        return HttpResponse(json.dumps(resp))
+    else:
+        return HttpResponse(wrongtype)
+    
+@csrf_exempt
+def modapellidos(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        id = data["id"]
+        apellido = data["apellido"]
+        Usuario.objects.filter(pk=id).update(apellido=apellido)
+        resp = {
+            "resp" : "surname_updated"
+        }
+        return HttpResponse(json.dumps(resp))
+    else:
+        return HttpResponse(wrongtype)
+    
+@csrf_exempt
+def modemail(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        id = data["id"]
+        email = data["email"]
+        Usuario.objects.filter(pk=id).update(email=email)
+        resp = {
+            "resp" : "email_updated"
+        }
+        return HttpResponse(json.dumps(resp))
+    else:
+        return HttpResponse(wrongtype)
+    
+@csrf_exempt
+def modclave(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        id = data["id"]
+        clave = data["clave"]
+        Usuario.objects.filter(pk=id).update(password=clave)
+        resp = {
+            "resp" : "clave_updated"
+        }
+        return HttpResponse(json.dumps(resp))
+    else:
+        return HttpResponse(wrongtype)
+    
+@csrf_exempt
+def eliminarcuenta(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        id = data["id"]
+        Usuario.objects.filter(pk=id).delete()
+        resp = {"resp" : "user_deleted"}
+        return HttpResponse(json.dumps(resp))
+    else:
+        return HttpResponse(wrongtype)

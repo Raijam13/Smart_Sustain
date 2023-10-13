@@ -1,10 +1,9 @@
-
 import styles from './styles.module.css'
 import React from 'react';
 import Barra from '../../components/barra/barra';
 import 'bootstrap/dist/css/bootstrap.css'
-let total = 0  
-let list  = []
+
+let total = 0
 
 const peticion = async function(){
     const retorno = []
@@ -13,15 +12,17 @@ const peticion = async function(){
         cache: "no-store",
         method: 'POST',
         body: JSON.stringify({
-            usuario: 2
+            usuario: 6
         })
     })
     const data = await response.json();
     const list = data.lista
+    total = 0
     list.forEach(element => {
         let persona = element.usuario
         let categoria = element.categoria
         let cantidad = element.cantidad
+        total = total+cantidad
         let fecha = element.fecha
         let elemento = <tr>
             <td>{persona}</td>
@@ -35,9 +36,9 @@ const peticion = async function(){
 }
 
 
-const movimientos = () => {
+const movimientos = async function() {
     
-    let tabla = peticion()
+    let tabla = await peticion()
     return( 
         <div className={styles.fondo}>
         
