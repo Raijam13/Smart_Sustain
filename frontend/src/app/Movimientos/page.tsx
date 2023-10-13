@@ -3,9 +3,9 @@ import styles from './styles.module.css'
 import React from 'react';
 import Barra from '../../components/barra/barra';
 import MovApi from '../../api/movimientos.js';
-import 'bootstrap/dist/css/bootstrap.css'
-let total = 0  
+import 'bootstrap/dist/css/bootstrap.css' 
 let list  = []
+let total = 0
 
 const peticion = async function(){
     const retorno = []
@@ -53,7 +53,7 @@ const movimientos = () => {
         <Barra/>
         <div><h1 className={`${styles.titulo} row`}>Movimientos</h1>
         <h2>Gastos netos este mes</h2>
-        <p><b>${balance()}</b></p>
+        <p><b>${total}</b></p>
         <h2>Lista de movimientos</h2>
         <table className={styles.tabla}>
             <tr>
