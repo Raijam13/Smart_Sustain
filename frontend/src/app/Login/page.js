@@ -53,23 +53,23 @@ const login = () => {
                     </Col>
                     <Col >  
                     <Row>
-                            <input type="text" className={Styles.form_control} name="correo" id="login" placeholder="Correo electrónico" />
+                            <input type="text" className={Styles.form_control} name="correo" id="login" placeholder="Correo electrónico:" />
                         </Row>
                         <Row>
-                            <input type="password" className={Styles.form_control} name="contraseña" id="login" placeholder="Contraseña" />
+                            <input type="password" className={Styles.form_control} name="contraseña" id="login" placeholder="Contraseña:" />
                         </Row>
                     </Col>
                     <Col  className={Styles.text_help1}>
                         <p>¿Olvidaste tu contraseña?</p>
                     </Col>
                     <Col md={{ span: 0, offset: 0 }}>
-                        <Button type="submit" class= {Styles.ingresar}>Iniciar sesión</Button>
+                        <Button type="submit" className= {Styles.ingresar}>Iniciar sesión</Button>
                     </Col>
                     <Col  className={Styles.text_help2}>
                         <p>¿No estás registrado?</p>
                     </Col>
                     <Col md={{ span: 0, offset: 0 }}>
-                        <Link href='/Registro'> <Button type="submit" class= {Styles.registrarse}>Registrarme</Button></Link>
+                        <Link href='/Registro'> <Button type="submit" className= {Styles.registrarse}>Registrarme</Button></Link>
                     </Col>
                 </Col>
             </Row>
