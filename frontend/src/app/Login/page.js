@@ -12,6 +12,9 @@ import Link from 'next/link';
 import DAO from '../../patrones/DAO.ts' 
 import { useState, useEffect } from 'react';
 
+let userdata = {id: "N/A",
+                resp: "no_login"}
+
 const peticion = async function(mail, passw){
     const response = await fetch ('http://127.0.0.1:8000/smartsustain/login', 
     {
@@ -23,7 +26,7 @@ const peticion = async function(mail, passw){
         }),
     })
     const data = await response.json()
-    console.log(data.resp)
+    userdata = data
 }
 
 const login = () => {
