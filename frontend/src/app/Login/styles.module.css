@@ -99,9 +99,12 @@
     font-size: 13px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(0, 0, 0);
-    margin-left: 40px;
+    margin-left: 160px;
 }
 
 .registrarse:hover, .ingresar:hover{  
     background-color: rgb(151, 128, 114);
+    color: black;
+    border: solid 1px;
+    border-color: green;
 }
