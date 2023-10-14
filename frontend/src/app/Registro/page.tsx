@@ -1,56 +1,60 @@
 'use client';
-import styles from './styles.module.css'
-import React from 'react';
-import Barra from '../../components/barra/barra';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Styles from './styles.module.css'
 import 'bootstrap/dist/css/bootstrap.css';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from "react-bootstrap/Col"
+import Container from 'react-bootstrap/Container';
+import Image from 'next/image';
+import logo from "../Imagenes/logo.jpg";
+import background from "../Imagenes/background.jpg"
+import Link from 'next/link';
+
 
 const Registro = () => {
-    return( 
-        <div className={styles.fondo}>
-         <div className={styles.cointainer}>
 
-            <h1>Registro</h1>
+    return(
+        <Container fluid className={Styles.Registro}>
+            <Image
+                src={background}
+                alt="fondo_login"
+                layout='fill'
+                objectFit='cover'
+                />
+            <Row>
+                <Col md={{ span: 4, offset: 4 }} className={Styles.create_login}>
+                   
+                    <Col>
+                        <Image className= {Styles.imagen_logo}
+                            src={logo}
+                            alt="logo_login"
+                        /> 
+                    </Col>
+                    <Col className={Styles.title_login}>
+                        <p>Registro de usuario</p>
+                    </Col>
+                    <Col >  
+                        <Row>
+                            <input type="text" className={Styles.form_control} name="Nombres" placeholder="Nombres:" />
+                        </Row>
+                        <Row>
+                            <input type="text" className={Styles.form_control} name="Apellidos"  placeholder="Apellidos:" />
+                        </Row>
+                        <Row>
+                            <input type="text" className={Styles.form_control} name="correo"  placeholder="Correo electrónico:" />
+                        </Row>
+                        <Row>
+                            <input type="password" className={Styles.form_control} name="contraseña"  placeholder="Contraseña:" />
+                        </Row>
+                    </Col>
 
-            <div className={styles.columna}>
-                 <div className={styles.items}>
-                     <div className={styles.label}><label>Nombres</label> </div>
-                     <Form.Control id='inputs' type="text" size="sm" placeholder="" className={styles.inputs} />
-                 </div>
-
-                <div className={styles.items}>
-                 <div className={styles.label}><label>Apellidos</label> </div>
-                    <Form.Control type="text" size="sm" placeholder="" className={styles.inputs} />
-                </div>
-            </div>
-
-            <div className={styles.columna}>
-                 <div className={styles.items}>
-                     <div className={styles.label}><label>Correo</label> </div>
-                     <Form.Control id='inputs' type="text" size="sm" placeholder="" className={styles.inputs} />
-                 </div>
-
-                <div className={styles.items}>
-                 <div className={styles.label}><label>Contraseña</label> </div>
-                    <Form.Control type="text" size="sm" placeholder="" className={styles.inputs} />
-                </div>
-            </div>
-            
-            <div className={styles.space}>
-
-            </div>
-
-            <div className={styles.boton}>
-                <Button variant="warning">Registrar</Button>{' '}
-                
-            </div>
-
-         </div>
-        </div>
-
-    
+                    <Col md={{ span: 0, offset: 0 }}>
+                        <Link href='/Login'> <Button type="submit" className= {Styles.registrarse}>Registrarme</Button></Link>
+                    </Col>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
-export default Registro;
+export default Registro

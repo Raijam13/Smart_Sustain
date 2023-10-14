@@ -9,7 +9,8 @@ import Image from 'next/image';
 import logo from "../Imagenes/logo.jpg";
 import background from "../Imagenes/background.jpg";
 import Link from 'next/link';
-
+import DAO from '../../patrones/DAO.ts' 
+import { useState, useEffect } from 'react';
 
 const peticion = async function(mail, passw){
     const response = await fetch ('http://127.0.0.1:8000/smartsustain/login', 
@@ -25,9 +26,8 @@ const peticion = async function(mail, passw){
     console.log(data.resp)
 }
 
-
 const login = () => {
-    /*
+    
     const [correo, setCorreo] = useState('');
     const [contra, setContra] = useState('');
 
@@ -44,8 +44,11 @@ const login = () => {
           console.log('Correo:', correo);
           console.log('Contraseña:', contra);
         }
-      };
-    */
+      };    
+
+
+
+
     return(
         <Container fluid className={Styles.Login}>
             <Image
@@ -88,7 +91,7 @@ const login = () => {
                         <p>¿No estás registrado?</p>
                     </Col>
                     <Col md={{ span: 0, offset: 0 }}>
-                        <Link href='/Registro'> <Button type="submit" class= {Styles.registrarse}>Registrarme</Button></Link>
+                        <Link href='/Registro'> <Button type="submit" className= {Styles.registrarse} >Registrarme</Button></Link>
                     </Col>
                 </Col>
             </Row>
