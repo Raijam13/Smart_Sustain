@@ -4,12 +4,15 @@ import Styles from './styles.module.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import React from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import background from "../Imagenes/background.jpg"
+import Image from 'next/image';
+import Barra from '../../components/barra/barra';
+import logo_perfil from "../Imagenes/Perfil.png";
 
 const Perfil = () => {
 
@@ -23,56 +26,64 @@ const Perfil = () => {
     router.push('./Inicio'); 
   };
 
-      return(
-        <Container fluid className={Styles.container}>
-          <Row >
-          <Col sm = {1} className={Styles.arrow}>
-            <i className="bi bi-arrow-left" onClick={handleInicio}></i>
-          </Col>
-          <Col sm = {5} className={Styles.col}>
-          Perfil
-          </Col>
-        </Row>
-  
-        <Row className= "flex-column" >
-          <Col className= {Styles.col2}>
-            <Image src="/perfil1.jpg"
-            alt = "No se encuentra"
-            width={250}
-            height={250}
-            roundedCircle />
-          </Col> 
-          <Col className= {Styles.col3}>
-            Nombres: Rosa Maria
-          </Col>
-          <Col className= {Styles.col3}>
-            Apellidos: Torres Díaz
-          </Col>
-          <Col className= {Styles.col3}>
-            Usuario: rTorres
-          </Col>
-          <Col className= {Styles.col3}>
-            Contraseña: 12346789
-          </Col>
-          <Col className= {Styles.col3}>
-            Correo electrónico: rtorres@gmail.com
-          </Col>
-          <Col className= {Styles.col3}>
-            Parentesco: Titular
-          </Col>
-        </Row>
-  
-        <Row className="text-center" >
-          <Col>
-          <Button  onClick={handleModificarPerfil} className= {Styles.col4} variant="outline-secondary">Modificar datos</Button>{' '}
-          </Col>
-          <Col>
-          <Button  className= {Styles.col5}variant="outline-danger">Eliminar cuenta</Button>{' '}
-          </Col>
-          
-        </Row>
-  
+  return(
+        <Container  fluid className={Styles.Login}>
+              <Image
+                src={background}
+                alt="fondo_login"
+                layout='fill'
+                objectFit='cover'
+                />
+
+              <Row className={Styles.barra}>
+                  <Barra></Barra>
+              </Row>
+
+              <Col md={{ span: 4, offset: 4 }} className={Styles.create_login}>  
+                    <Col>
+                        <Image className= {Styles.imagen_logo_perfil}
+                            src={logo_perfil}
+                            alt="logo_perfil"
+                        /> 
+                    </Col>
+
+                    <Col className={Styles.title_login}>
+                        <p>Mi perfil</p>
+                    </Col>
+                    <Col >  
+                        <Row>
+                            <input type="text" className={Styles.form_control} name="Nombre" placeholder="Nombre: Rosa María" />
+                        </Row>
+                        <Row>
+                            <input type="text" className={Styles.form_control} name="apellido" placeholder="Apellidos: Torres Díaz"/>
+                        </Row>
+                        <Row>
+                            <input type="text" className={Styles.form_control} name="correo" placeholder="Correo electrónico: rtorres@gmail.com" />
+                        </Row>
+                        <Row>
+                            <input type="password" className={Styles.form_control} name="contraseña" placeholder="Contraseña: *********" />
+                        </Row>
+                        <Row>
+                            <input type="texto" className={Styles.form_control} name="usuario" placeholder="Usuario: rTorres" />
+                        </Row>
+                        <Row>
+                            <input type="texto" className={Styles.form_control} name="parentesco" placeholder="Parentesco: Titular  " />
+                        </Row>
+                    </Col>
+                    <Row fluid>
+                        <Col className={Styles.modificar}>
+                            <Button  onClick={handleModificarPerfil} className= {Styles.modificar_boton}>Modificar datos</Button>{' '}
+                        </Col>
+                        <Col className={Styles.eliminar}>
+                            <Button  className= {Styles.eliminar_boton}>Eliminar cuenta</Button>{' '}
+                        </Col>
+                    </Row>
+              </Col>
+
+              
+
         </Container>
+        
     );
   
 }

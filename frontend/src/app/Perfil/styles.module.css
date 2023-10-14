@@ -1,64 +1,112 @@
-.container{
-    background-color: #ffd46c;
+.Login{
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100wh;
+    margin-right : 0 !important;
+    margin-left : 0 !important;
+    padding-right : 0 !important;
+    padding-left : 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.create_login {
+    margin-top: 100px;
+    border: 1px;
+    border-radius: 40px ;
+    width: 500px;
+    height: 500px;
+    background-color: rgb(248, 248, 154);
+    position: fixed;
+}
+
+.barra{
+    position: fixed;
+    display: flex;
+    width: 221vh;
     height: 100vh;
 }
 
+.imagen_logo_perfil{
+    width:80px;
+    height:80px;
+    margin-top: 20px;
+    margin-left: 210px;
+    border-radius: 30%;
+}
 
-.col{
-    font-size: 2rem;
+.title_login p{
+    font-size: 30px;
+    color:rgb(0, 0, 0);
+    margin-left: 0px;
+    margin-top: 10px;
+    text-align: center;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.form_control{
+    
+    color:rgb(0, 0, 0);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    width: 300px;
+}
+.modificar{
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    
+}
+
+.eliminar{
+    width: 80px;
+    margin-left: -50px;
+    
+}
+
+.modificar_boton{
+    border-color: white;
+    background-color: rgb(147, 210, 58);
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 5px;
+    height: 50px;
+    width: 120px;
     font-weight: bold;
-    align-items: flex-start; /* Centra verticalmente el contenido en la parte superior */
-    display: flex;
-    text-align: left;
+    font-size: 13px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    margin-left: 120px;
 }
 
-.arrow{
-    font-size: 2rem;
-    margin-left: 2rem;
+.eliminar_boton{
+    border-color: white;
+    background-color: rgb(147, 210, 58);
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 5px;
+    height: 50px;
+    width: 120px;
     font-weight: bold;
-    align-items: flex-start; /* Centra verticalmente el contenido en la parte superior */
-    display: flex;
-    text-align: left;
-    max-width: 50px;
-    transition: color 0.3s;
+    font-size: 13px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    margin-left: 80px;
 }
 
-.arrow:hover {
-    color: #D35237
-    ; 
-  }
-.col2{
-    margin-top: 4rem;
-    align-items: center; /*Centra todo el texto en la parte superior*/ 
-    justify-content: center; /*Centra todo el texto al medio de la pantalla*/
-    display: flex; /*Necesita esto para que funcionen los anteriores*/
+.modificar_boton:hover, .eliminar_boton:hover{  
+    background-color: rgb(151, 128, 114);
+    color: black;
+    border: solid 1px;
+    border-color: green;
 }
 
-.col3{
-    margin-top: 3rem;
-    font-size: 1.5rem;
-    max-width: 550px;
-    background-color:burlywood;
-    border-radius: 10px;
-    display: flex;
-    align-items: center; /* Centra verticalmente el contenido */
-    justify-content: center; /* Centra horizontalmente el contenido */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.col4{
-    margin-top: 5rem;
-    display: flex;
-    align-items: center; /* Centra verticalmente el contenido */
-    justify-content: center; /* Centra horizontalmente el contenido */
-    margin-left: auto;
-}
-
-.col5{
-    margin-top: 5rem;
-    display: flex;
-    max-width: fit-content;
-    margin-right: auto;
-}
 

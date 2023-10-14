@@ -33,9 +33,6 @@ const login = () => {
         }
       };    
 
-
-
-
     return(
         <Container fluid className={Styles.Login}>
             <Image

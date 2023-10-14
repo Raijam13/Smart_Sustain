@@ -23,8 +23,8 @@ function Elemento(props){
 }
 
 function barra(){
-    const enlaces = ['/', '/Objetivos', '/Estadisticas', '/Perfil', '/Movimientos']
-    const textos = ['Inicio', 'Mis objetivos', 'Estadísticas', 'Mi perfil', 'Mis movimientos']
+    const enlaces = ['/', '/Objetivos', '/Estadisticas', '/Movimientos' , '/Perfil' ]
+    const textos = ['Inicio', 'Mis objetivos', 'Estadísticas', 'Mis movimientos', 'Mi perfil',]
     const bar = []
     for (let i = 0; i < enlaces.length; i++) {
         bar.push(<Elemento enlace = {enlaces[i]} texto = {textos[i]}/>)
