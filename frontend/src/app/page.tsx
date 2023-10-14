@@ -1,14 +1,14 @@
 'use client';
 import styles from './page.module.css'
 import React from 'react';
-import Login from './Login/page';
+import Inicio from './Inicio/page';
 import 'bootstrap/dist/css/bootstrap.css'
 
 const inicio = () => {
     return( 
         <div className={`${styles.fondo} row`}>
         
-        <Login></Login>
+        <Inicio></Inicio>
         <div></div>
 
         </div>

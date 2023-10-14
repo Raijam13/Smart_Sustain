@@ -105,4 +105,7 @@
 
 .registrarse:hover, .ingresar:hover{  
     background-color: rgb(151, 128, 114);
+    color: black;
+    border: solid 1px;
+    border-color: green;
 }
