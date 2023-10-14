@@ -11,7 +11,7 @@ import background from "../Imagenes/background.jpg"
 import Link from 'next/link';
 
 
-const Inicio = () => {
+const PaginaInicial = () => {
 
     return(
         <Container fluid className={Styles.Registro}>
@@ -44,4 +44,4 @@ const Inicio = () => {
     )
 }
 
-export default Inicio
+export default PaginaInicial
