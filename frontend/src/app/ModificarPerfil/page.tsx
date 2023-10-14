@@ -11,6 +11,10 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useRouter } from 'next/navigation';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import background from "../Imagenes/background.jpg"
+import Barra_superior from '../../components/barra/barra_superior';
+import Barra_inferior from '../../components/barra/barra_inferior';
+import logo_perfil from "../Imagenes/Perfil.png";
 
 function CambiarNombres(props) {
 
@@ -21,13 +25,13 @@ function CambiarNombres(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className ={Styles.title_cambio}>
           <Modal.Title>Cambiar datos</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="Nombres">
-              <Form.Label>Nombres</Form.Label>
+            <Form.Group className={Styles.datos_modificar} controlId="Nombres">
+              <Form.Label>Nombres: </Form.Label>
               <Form.Control
                 placeholder="Escribir nombres"
                 autoFocus
@@ -36,11 +40,11 @@ function CambiarNombres(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.onHide}>
-            Close
+          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+            Cerrar
           </Button>
-          <Button variant="primary" onClick={props.onHide}>
-            Save Changes
+          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+            Guardar cambios
           </Button>
         </Modal.Footer>
       </Modal>
@@ -56,13 +60,13 @@ function Cambiarpellidos(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className ={Styles.title_cambio}>
           <Modal.Title>Cambiar datos</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="Nombres">
-              <Form.Label>Apellidos</Form.Label>
+            <Form.Group className={Styles.datos_modificar}controlId="apellidos">
+              <Form.Label>Apellidos: </Form.Label>
               <Form.Control
                 placeholder="Escribir apellidos"
                 autoFocus
@@ -71,11 +75,11 @@ function Cambiarpellidos(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.onHide}>
-            Close
+          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+            Cerrar
           </Button>
-          <Button variant="primary" onClick={props.onHide}>
-            Save Changes
+          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+            Guardar cambios
           </Button>
         </Modal.Footer>
       </Modal>
@@ -90,13 +94,13 @@ function Cambiarcorreo(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className ={Styles.title_cambio}>
           <Modal.Title>Cambiar datos</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className="mb-3" controlId="Nombres">
-            <Form.Label>Email address</Form.Label>
+            <Form.Group className={Styles.datos_modificar} controlId="correo">
+            <Form.Label>Correo electrónico: </Form.Label>
               <Form.Control
                 type="email"
                 placeholder="name@example.com"
@@ -106,17 +110,51 @@ function Cambiarcorreo(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.onHide}>
-            Close
+          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+            Cerrar
           </Button>
-          <Button variant="primary" onClick={props.onHide}>
-            Save Changes
+          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+            Guardar cambios
           </Button>
         </Modal.Footer>
       </Modal>
   );
 }
 
+function Cambiarcontrasenia(props) {
+  return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton className ={Styles.title_cambio}>
+          <Modal.Title>Cambiar datos</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className={Styles.datos_modificar} controlId="contra">
+            <Form.Label>Contraseña:  </Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="******"
+                autoFocus
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+              Cerrar
+          </Button>
+          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+              Guardar cambios
+          </Button>
+        </Modal.Footer>
+      </Modal>
+  );
+}
 
 const Perfil = () => {
 
@@ -129,61 +167,70 @@ const Perfil = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow2, setModalShow2] = React.useState(false);
   const [modalShow3, setModalShow3] = React.useState(false);
+  const [modalShow4, setModalShow4] = React.useState(false);
 
   return(
-      <Container fluid className={Styles.container}>
-        <Row >
-        <Col  sm = {1} className={Styles.arrow}>
-          <i className="bi bi-arrow-left icono" onClick={handlePerfil}  ></i>
+      <Container fluid className={Styles.Login}>
+            <Image
+                src={background.src}
+                alt="fondo_login"
+                layout='fill'
+                objectFit='cover'
+              />
+
+              <Row className={Styles.barra_superior}>
+                  <Barra_superior></Barra_superior>
+              </Row>
+          <Col md={{ span: 4, offset: 4 }} className={Styles.create_login}>
+                    <Col>
+                        <Image className= {Styles.imagen_logo_perfil}
+                            src={logo_perfil.src}
+                            alt="logo_perfil"
+                        /> 
+                    </Col>  
+                    <Col className={Styles.title_login}>
+                        <p>Modificar perfil</p>
+                    </Col>
+              
+                  <Row >
+                    <button onClick={() => setModalShow(true)} className= {Styles.col3}> Nombres: Rosa María <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
+                  </Row> 
+                  <Row>
+                    <button  onClick={() => setModalShow2(true)} className= {Styles.col3}> Apellidos: Torres Díaz <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
+                  </Row>
+                  <Row>
+                    <button onClick={() => setModalShow3(true)} className= {Styles.col3}> Correo electrónico: rtorres@gmail.com <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
+                  </Row>
+                  <Row>
+                    <button onClick={() => setModalShow4(true)} className= {Styles.col3}> Contraseña: ******** <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
+                  </Row>
+
+                  <CambiarNombres
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                  />
+
+                  <Cambiarpellidos
+                  show={modalShow2}
+                  onHide={() => setModalShow2(false)}
+                  />
+
+                <Cambiarcorreo
+                show={modalShow3}
+                onHide={() => setModalShow3(false)}/>
+
+                <Cambiarcorreo
+                show={modalShow4}
+                onHide={() => setModalShow4(false)}/>
+
+
+                <Col className='eliminar'>
+                  <Button className= {Styles.eliminar_boton_modif}>Eliminar cuenta</Button>{' '}
+                </Col>
+                <Row className={Styles.barra_inferior}>
+                  <Barra_inferior></Barra_inferior>
+              </Row>
         </Col>
-        <Col sm = {5} className={Styles.col}>
-        Perfil
-        </Col>  
-      </Row>
-
-      <Row className= "flex-column" >
-        <Col className= {Styles.col2}>
-          <Image src="/perfil1.jpg"
-          alt = "No se encuentra"
-          width={250}
-          height={250} 
-          roundedCircle />
-        </Col> 
-        <Col >
-         <button onClick={() => setModalShow(true)} className= {Styles.col3}> Nombres: Angelo Humberto <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
-        </Col> 
-        <Col>
-        <button  onClick={() => setModalShow2(true)} className= {Styles.col3}> Apellidos: Medina Garnique <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
-        </Col>
-        <Col>
-        <button onClick={() => setModalShow3(true)} className= {Styles.col3}> Correo electrónico: Angelo Medina <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
-        </Col>
-        <Col>
-        <button onClick={() => setModalShow(true)} className= {Styles.col3}> Contraseña: 123456789 <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
-        </Col>
-
-        <CambiarNombres
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        />
-
-        <Cambiarpellidos
-        show={modalShow2}
-        onHide={() => setModalShow2(false)}
-        />
-
-       <Cambiarcorreo
-       show={modalShow3}
-       onHide={() => setModalShow3(false)}/>
-
-      </Row>
-
-      <Row className="text-center">
-        <Col>
-        <Button className= {Styles.col5}variant="outline-danger">Eliminar cuenta</Button>{' '}
-        </Col>
-      </Row>
-
       </Container>
       
 
