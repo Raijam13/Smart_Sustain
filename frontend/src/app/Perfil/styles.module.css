@@ -22,7 +22,15 @@
     position: fixed;
 }
 
-.barra{
+.barra_superior{
+    position: fixed;
+    display: flex;
+    width: 221vh;
+    height: 100vh;
+}
+
+.barra_inferior{
+    margin-top: 650px;
     position: fixed;
     display: flex;
     width: 221vh;

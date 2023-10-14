@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
 import React from 'react';
-import Barra from '../../components/barra/barra';
+import Barra from '../../components/barra/barra_superior';
 import 'bootstrap/dist/css/bootstrap.css'
 
 let total = 0

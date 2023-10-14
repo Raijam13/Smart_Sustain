@@ -11,7 +11,8 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import background from "../Imagenes/background.jpg"
 import Image from 'next/image';
-import Barra from '../../components/barra/barra';
+import Barra_superior from '../../components/barra/barra_superior';
+import Barra_inferior from '../../components/barra/barra_inferior';
 import logo_perfil from "../Imagenes/Perfil.png";
 
 const Perfil = () => {
@@ -35,8 +36,8 @@ const Perfil = () => {
                 objectFit='cover'
                 />
 
-              <Row className={Styles.barra}>
-                  <Barra></Barra>
+              <Row className={Styles.barra_superior}>
+                  <Barra_superior></Barra_superior>
               </Row>
 
               <Col md={{ span: 4, offset: 4 }} className={Styles.create_login}>  
@@ -79,7 +80,9 @@ const Perfil = () => {
                         </Col>
                     </Row>
               </Col>
-
+              <Row className={Styles.barra_inferior}>
+                  <Barra_inferior></Barra_inferior>
+              </Row>
               
 
         </Container>
