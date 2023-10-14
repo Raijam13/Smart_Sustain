@@ -9,7 +9,6 @@ const inicio = () => {
         <div className={`${styles.fondo} row`}>
         
         <PaginaInicial></PaginaInicial>
-        <div></div>
 
         </div>
 

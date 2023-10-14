@@ -1,0 +1,91 @@
+.Login{
+
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100wh;
+    margin-right : 0 !important;
+    margin-left : 0 !important;
+    padding-right : 0 !important;
+    padding-left : 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.create_inicio{
+    margin-top: 60px;
+    border: 1px;
+    border-radius: 40px ;
+    width: 1050px;
+    height: 600px;
+    background-color: rgb(248, 248, 154);
+    position: fixed;
+}
+
+.imagen_inicio_pag{
+    width:700px;
+    height:300px;
+    margin-top: 10px;
+    margin-left: 180px;
+}
+
+.barra_superior{
+    position: fixed;
+    display: flex;
+    width: 221vh;
+    height: 100vh;
+}
+
+.barra_inferior{
+    margin-top: 650px;
+    position: fixed;
+    display: flex;
+    width: 221vh;
+    height: 100vh;
+    margin-left: 0px;
+}
+
+.title_login p{
+    font-size: 30px;
+    color:rgb(0, 0, 0);
+    margin-left: 0px;
+    margin-top: 40px;
+    text-align: center;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.title2_login p{
+    font-size: 20px;
+    color:rgb(0, 0, 0);
+    margin-left: 30px;
+    margin-top: 40px;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.ingresar{
+    border-color: white;
+    background-color: rgb(147, 210, 58);
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 5px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 13px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    margin-left: 400px;
+    margin-top: 20px;
+}
+
+
+.ingresar:hover{  
+    background-color: rgb(151, 128, 114);
+    color: black;
+    border: solid 1px;
+    border-color: green;
+}

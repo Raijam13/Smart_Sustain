@@ -10,8 +10,8 @@ function Elemento(props){
 }
 
 function barra_inferior(){
-    const enlaces = ['/', '/Objetivos', '/Estadísticas' , '/Familia' ]
-    const textos = ['   Inicio', '   Mis objetivos', '   Mis estadísticas', '   Mi grupo familiar',]
+    const enlaces = ['/Inicio', '/Objetivos', '/Movimientos' , '/Familia' ]
+    const textos = ['   Inicio', '   Mis objetivos', '   Mis movimientos', '   Mi grupo familiar',]
     const iconos = [ <FontAwesomeIcon icon={faHouseChimney} />, <FontAwesomeIcon icon={faBullseye} />, <FontAwesomeIcon icon={faChartSimple} />, <FontAwesomeIcon icon={faPeopleRoof} />]
     const bar = []
     for (let i = 0; i < enlaces.length; i++) {
