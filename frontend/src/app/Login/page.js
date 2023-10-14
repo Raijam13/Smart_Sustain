@@ -7,8 +7,23 @@ import Col from "react-bootstrap/Col"
 import Container from 'react-bootstrap/Container';
 import Image from 'next/image';
 import logo from "../Imagenes/logo.jpg";
-import background from "../Imagenes/background.jpg"
+import background from "../Imagenes/background.jpg";
 import Link from 'next/link';
+
+
+const peticion = async function(mail, passw){
+    const response = await fetch ('http://127.0.0.1:8000/smartsustain/login', 
+    {
+        cache: 'no-store',
+        method: 'POST',
+        body: JSON.stringify({
+            email : mail,
+            password : passw
+        }),
+    })
+    const data = await response.json()
+    console.log(data.resp)
+}
 
 
 const login = () => {
@@ -53,17 +68,21 @@ const login = () => {
                     </Col>
                     <Col >  
                     <Row>
-                            <input type="text" className={Styles.form_control} name="correo" id="login" placeholder="Correo electrónico" />
+                            <input type="email" className={Styles.form_control} name="correo" id="login_mail" placeholder="Correo electrónico" />
                         </Row>
                         <Row>
-                            <input type="password" className={Styles.form_control} name="contraseña" id="login" placeholder="Contraseña" />
+                            <input type="password" className={Styles.form_control} name="contraseña" id="login_pw" placeholder="Contraseña" />
                         </Row>
                     </Col>
                     <Col  className={Styles.text_help1}>
                         <p>¿Olvidaste tu contraseña?</p>
                     </Col>
                     <Col md={{ span: 0, offset: 0 }}>
-                        <Button type="submit" class= {Styles.ingresar}>Iniciar sesión</Button>
+                        <Button type="submit" class= {Styles.ingresar} onClick={function()
+                            {   let mail = document.getElementById("login_mail").value
+                                let pw = document.getElementById("login_pw").value
+                                peticion(mail, pw)
+                                }}>Iniciar sesión</Button>
                     </Col>
                     <Col  className={Styles.text_help2}>
                         <p>¿No estás registrado?</p>

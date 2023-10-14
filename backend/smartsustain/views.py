@@ -18,7 +18,8 @@ def obtenermovimientos(request):
                 "usuario" : m.usuario.nombre,
                 "categoria" : "N/A",
                 "cantidad" : m.cantidad,
-                "fecha" : str(m.fecha)
+                "fecha" : str(m.fecha),
+                "id" : m.pk
             })
         dict = {"lista" : lista}
         return HttpResponse(json.dumps(dict))
