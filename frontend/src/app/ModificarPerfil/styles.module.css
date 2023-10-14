@@ -98,7 +98,7 @@
     margin-top: 40px;
 }
 
-.eliminar_boton:hover{  
+.eliminar_boton_modif:hover{  
     background-color: rgb(151, 128, 114);
     color: black;
     border: solid 1px;
@@ -118,24 +118,3 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.botones_recuadro{
-    border-color: white;
-    background-color: rgb(147, 210, 58);
-    text-align: center;
-    align-items: center;
-    width: 30%;
-    border-radius: 5px;
-    height: 50px;
-    width: 120px;
-    font-size: 13px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: rgb(0, 0, 0);
-
-}
-
-.botones_recuadro:hover{  
-    background-color: rgb(217, 212, 209);
-    color: black;
-    border: solid 1px;
-    border-color: green;
-}

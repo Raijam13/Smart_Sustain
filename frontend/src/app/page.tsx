@@ -1,17 +1,15 @@
 'use client';
 import styles from './page.module.css'
 import React from 'react';
-import Barra from '../components/barra/barra_superior';
+import Login from './Login/page';
 import 'bootstrap/dist/css/bootstrap.css'
 
 const inicio = () => {
     return( 
         <div className={`${styles.fondo} row`}>
         
-        <Barra></Barra>
+        <Login></Login>
         <div></div>
-            
-           
 
         </div>
 

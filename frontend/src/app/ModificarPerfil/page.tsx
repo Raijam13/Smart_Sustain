@@ -174,8 +174,6 @@ const Perfil = () => {
             <Image
                 src={background.src}
                 alt="fondo_login"
-                layout='fill'
-                objectFit='cover'
               />
 
               <Row className={Styles.barra_superior}>
