@@ -52,23 +52,23 @@ const Perfil = () => {
                         <p>Mi perfil</p>
                     </Col>
                     <Col >  
-                        <Row>
-                            <input type="text" className={Styles.form_control} name="Nombre" placeholder="Nombre: Rosa María" />
+                        <Row className={Styles.form_control}>
+                            Nombre: Rosa María
                         </Row>
-                        <Row>
-                            <input type="text" className={Styles.form_control} name="apellido" placeholder="Apellidos: Torres Díaz"/>
+                        <Row className={Styles.form_control}>
+                           Apellidos: Torres Díaz
                         </Row>
-                        <Row>
-                            <input type="text" className={Styles.form_control} name="correo" placeholder="Correo electrónico: rtorres@gmail.com" />
+                        <Row className={Styles.form_control}>
+                             Correo electrónico: rtorres@gmail.com
                         </Row>
-                        <Row>
-                            <input type="password" className={Styles.form_control} name="contraseña" placeholder="Contraseña: *********" />
+                        <Row className={Styles.form_control}>
+                            Contraseña: *********
                         </Row>
-                        <Row>
-                            <input type="texto" className={Styles.form_control} name="usuario" placeholder="Usuario: rTorres" />
+                        <Row className={Styles.form_control}>
+                             Usuario: rTorres
                         </Row>
-                        <Row>
-                            <input type="texto" className={Styles.form_control} name="parentesco" placeholder="Parentesco: Titular  " />
+                        <Row className={Styles.form_control}>
+                            Parentesco: Titular
                         </Row>
                     </Col>
                     <Row fluid>
@@ -78,6 +78,7 @@ const Perfil = () => {
                         <Col className={Styles.eliminar}>
                             <Button  className= {Styles.eliminar_boton}>Eliminar cuenta</Button>{' '}
                         </Col>
+                        
                     </Row>
               </Col>
               <Row className={Styles.barra_inferior}>

@@ -83,7 +83,7 @@
 
 .eliminar_boton_modif{
     border-color: white;
-    background-color: rgb(147, 210, 58);
+    background-color: rgb(210, 58, 78);
     text-align: center;
     align-items: center;
     width: 30%;
@@ -117,4 +117,5 @@
 .datos_modificar{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 
