@@ -40,6 +40,7 @@ def validarlogin(request):
                 if u.password == passw:
                     resp["resp"] = "login_ok"
                     resp["id"] = u.pk
+                    resp["user"] = u.email
                 else:
                     resp["resp"] = "wrong_password"
                 break

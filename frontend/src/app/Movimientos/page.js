@@ -1,18 +1,27 @@
+'use client';
 import styles from './styles.module.css'
 import React from 'react';
 import Barra from '../../components/barra/barra_superior';
 import 'bootstrap/dist/css/bootstrap.css'
+import { useEffect } from 'react';
+import peticion from '../../api/Movimientos.js'
+
 
 let total = 0
+
+
+/*
 
 const peticion = async function(){
     const retorno = []
     const response = await fetch ('http://127.0.0.1:8000/smartsustain/movimientos',
     {
+
+        
         cache: "no-store",
         method: 'POST',
         body: JSON.stringify({
-            usuario: 6
+            usuario: 1
         })
     })
     const data = await response.json();
@@ -34,11 +43,37 @@ const peticion = async function(){
     });
     return retorno
 }
+*/
+
+/*
+const cache  = () => {
+    const storedUserData = localStorage.getItem('userData');
+    const userData = storedUserData ? JSON.parse(storedUserData) : null;
+    console.log(userrData.id)
+}
+*/
 
 
-const movimientos = async function() {
+const movimientos = () => {
+    /*let usuarioCache= cache()
+    let tabla = await peticion()*/
+
+    let tabla
+
+    useEffect(() => {
+        
+        const storedUserData = localStorage.getItem('userData');
+        const datos = storedUserData ? JSON.parse(storedUserData) : null;
+         alert(datos.id)
+         let tabla=  peticion(datos.id)
+        
+        
+
+
+    }, []);
+
+
     
-    let tabla = await peticion()
     return( 
         <div className={styles.fondo}>
         
@@ -53,8 +88,9 @@ const movimientos = async function() {
                 <th>Categoria</th>
                 <th>Cantidad</th>
                 <th>Fecha</th>
+                {tabla}
             </tr>
-            {tabla}
+           
         </table></div>
         </div>
 
