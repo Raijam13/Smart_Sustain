@@ -93,7 +93,7 @@ const login = () => {
                             {   let mail = document.getElementById("login_mail").value
                                 let pw = document.getElementById("login_pw").value
                                 peticion(mail, pw)
-                                }}  href='/Movimientos'>Iniciar sesión</Button>
+                                }}  href='/Inicio'>Iniciar sesión</Button>
                     </Col>
                     <Col  className={Styles.text_help2}>
                         <p>¿No estás registrado?</p>
