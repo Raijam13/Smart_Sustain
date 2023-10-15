@@ -9,12 +9,14 @@ import Image from 'next/image';
 import logo from "../Imagenes/logo.jpg";
 import background from "../Imagenes/background.jpg";
 import Link from 'next/link';
-import DAO from '../../patrones/DAO.ts' 
+import DAO from '../../patrones/DAO' 
 import { useState, useEffect } from 'react';
-
-let userdata = {id: "N/A",
-                resp: "no_login"}
-
+import peticion from '../../api/login.js'
+let userdata = {
+                resp: "no_login",
+                id: "N/A",
+                user:"no_login"}
+/*
 const peticion = async function(mail, passw){
     const response = await fetch ('http://127.0.0.1:8000/smartsustain/login', 
     {
@@ -27,10 +29,16 @@ const peticion = async function(mail, passw){
     })
     const data = await response.json()
     userdata = data
+
+    localStorage.setItem('userData', JSON.stringify(userdata));
+    press() 
 }
+*/
+  
+
 
 const login = () => {
-    
+    /*
     const [correo, setCorreo] = useState('');
     const [contra, setContra] = useState('');
 
@@ -48,7 +56,7 @@ const login = () => {
           console.log('Contraseña:', contra);
         }
       };    
-
+      */
     return(
         <Container fluid className={Styles.Login}>
             <Image
@@ -81,11 +89,11 @@ const login = () => {
                         <p>¿Olvidaste tu contraseña?</p>
                     </Col>
                     <Col md={{ span: 0, offset: 0 }}>
-                        <Button type="submit" class= {Styles.ingresar} onClick={function()
+                        <Button type="submit"  class= {Styles.ingresar} onClick={function()
                             {   let mail = document.getElementById("login_mail").value
                                 let pw = document.getElementById("login_pw").value
                                 peticion(mail, pw)
-                                }}>Iniciar sesión</Button>
+                                }}  href='/Movimientos'>Iniciar sesión</Button>
                     </Col>
                     <Col  className={Styles.text_help2}>
                         <p>¿No estás registrado?</p>
