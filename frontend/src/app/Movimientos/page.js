@@ -12,6 +12,11 @@ import Col from 'react-bootstrap/esm/Col';
 import { useEffect, useState } from 'react';
 import peticion from '../../api/Movimientos.js'
 import MovTotal from '../../api/MovimientosTotal.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartSimple, faMoneyCheckDollar, faFileInvoiceDollar} from "@fortawesome/free-solid-svg-icons";
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/esm/Button';
+import logo_movimientos from "../Imagenes/logo_movimientos.jpg";
 
 
 /*
@@ -70,9 +75,6 @@ const movimientos = () => {
         const datos = storedUserData ? JSON.parse(storedUserData) : null;
         setTabla(peticion(datos.id))
         setTotal(MovTotal(datos.id))
-        
-        
-
 
     }, []);
  
@@ -89,20 +91,39 @@ const movimientos = () => {
             </Row>
             <Col md={{ span: 2, offset: 2 }} className={Styles.create_inicio}>
                     <Col className={Styles.title_login}>
-                        <p>Mis movimientos</p>
+                         <p><FontAwesomeIcon icon={faChartSimple}/>  Mis movimientos</p>
                     </Col>
-
-                <h2>Gastos netos este mes</h2>
-                <p><b>${total}</b></p>
-                <h2>Lista de movimientos</h2>
-                <table className={Styles.tabla}>
-                    <tr>
-                        <th>Persona</th>
-                        <th>Cantidad</th>
-                        <th>Fecha</th>
-                    </tr>
-                    {tabla} 
-                </table>
+                    <Col className={Styles.title2_login}>
+                         <p><FontAwesomeIcon icon={faMoneyCheckDollar}/><strong>  Gastos netos del mes: </strong></p>
+                    </Col>
+                    <Col className={Styles.title3_login}>
+                        <p>${total}</p>     
+                    </Col>
+                    <Col>
+                        <Image className= {Styles.imagen_movimientos_pag}
+                            src={logo_movimientos}
+                            alt="logo_movimientos"
+                        /> 
+                    </Col>
+                    <Col className={Styles.title2_login}>
+                         <p><FontAwesomeIcon icon={faFileInvoiceDollar} /><strong>  Lista de movimientos: </strong></p>
+                    </Col>
+                    <Col>
+                        <Table className={Styles.tabla_datos}>
+                            <tr>
+                                <th>Persona</th>
+                                <th>Cantidad</th>
+                                <th>Fecha</th>
+                            </tr> 
+                            {tabla} 
+                        </Table>
+                    </Col>
+                    <Col className={Styles.modificar_movimiento}>
+                            <Button className= {Styles.modificar_boton}>Modificar movimiento</Button>{' '}
+                        </Col>
+                        <Col className={Styles.eliminar_movimiento}>
+                            <Button  className= {Styles.eliminar_boton}>Eliminar movimiento</Button>{' '}
+                    </Col>
             </Col>
             <Row className={Styles.barra_inferior}>
                   <Barra_inferior></Barra_inferior>
