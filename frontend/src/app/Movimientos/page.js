@@ -1,8 +1,14 @@
 'use client';
-import styles from './styles.module.css'
-import React from 'react';
-import Barra from '../../components/barra/barra_superior';
+import Styles from './styles.module.css'
 import 'bootstrap/dist/css/bootstrap.css'
+import Container from 'react-bootstrap/esm/Container';
+import React from 'react';
+import Barra_superior from '../../components/barra/barra_superior';
+import Barra_inferior from '../../components/barra/barra_inferior';
+import Image from 'next/image';
+import background from '../Imagenes/background.jpg'
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
 import { useEffect } from 'react';
 import peticion from '../../api/Movimientos.js'
 
@@ -71,28 +77,40 @@ const movimientos = () => {
 
 
     }, []);
-
-
-    
+ 
     return( 
-        <div className={styles.fondo}>
-        
-        <Barra/>
-        <div><h1 className={`${styles.titulo} row`}>Movimientos</h1>
-        <h2>Gastos netos este mes</h2>
-        <p><b>${total}</b></p>
-        <h2>Lista de movimientos</h2>
-        <table className={styles.tabla}>
-            <tr>
-                <th>Persona</th>
-                <th>Categoria</th>
-                <th>Cantidad</th>
-                <th>Fecha</th>
-                {tabla}
-            </tr>
-           
-        </table></div>
-        </div>
+        <Container fluid className={Styles.Login}>
+            <Image
+                src={background}
+                alt="fondo_login"
+                layout='fill'
+                objectFit='cover'
+                />
+            <Row className={Styles.barra_superior}>
+                  <Barra_superior></Barra_superior>
+            </Row>
+            <Col md={{ span: 2, offset: 2 }} className={Styles.create_inicio}>
+                    <Col className={Styles.title_login}>
+                        <p>Mis movimientos</p>
+                    </Col>
+
+                <h2>Gastos netos este mes</h2>
+                <p><b>${total}</b></p>
+                <h2>Lista de movimientos</h2>
+                <table className={Styles.tabla}>
+                    <tr>
+                        <th>Persona</th>
+                        <th>Categoria</th>
+                        <th>Cantidad</th>
+                        <th>Fecha</th>
+                        {tabla}
+                    </tr>
+                </table>
+            </Col>
+            <Row className={Styles.barra_inferior}>
+                  <Barra_inferior></Barra_inferior>
+            </Row>
+        </Container>
 
     
     )
