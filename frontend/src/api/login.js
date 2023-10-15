@@ -41,7 +41,6 @@ const press = () => {
 
     const storedUserData = localStorage.getItem('userData');
     const datos = storedUserData ? JSON.parse(storedUserData) : null;
-    alert(datos.id)
     console.log(datos.resp)
     console.log(datos.user)
 };
