@@ -18,13 +18,11 @@ const Movimientos = async function(id){
     total = 0
     list.forEach(element => {
         let persona = element.usuario
-        let categoria = element.categoria
         let cantidad = element.cantidad
         total = total+cantidad
         let fecha = element.fecha
         let elemento = <tr>
             <td>{persona}</td>
-            <td>{categoria}</td>
             <td>{cantidad}</td>
             <td>{fecha}</td>
         </tr>

@@ -9,7 +9,7 @@ import Image from 'next/image';
 import background from '../Imagenes/background.jpg'
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import peticion from '../../api/Movimientos.js'
 
 
@@ -63,15 +63,13 @@ const cache  = () => {
 const movimientos = () => {
     /*let usuarioCache= cache()
     let tabla = await peticion()*/
-
-    let tabla
+    const [tabla, setTabla] = useState([])
 
     useEffect(() => {
         
         const storedUserData = localStorage.getItem('userData');
         const datos = storedUserData ? JSON.parse(storedUserData) : null;
-         alert(datos.id)
-         let tabla=  peticion(datos.id)
+        setTabla(peticion(datos.id))
         
         
 
@@ -100,11 +98,10 @@ const movimientos = () => {
                 <table className={Styles.tabla}>
                     <tr>
                         <th>Persona</th>
-                        <th>Categoria</th>
                         <th>Cantidad</th>
                         <th>Fecha</th>
-                        {tabla}
                     </tr>
+                    {tabla} 
                 </table>
             </Col>
             <Row className={Styles.barra_inferior}>
