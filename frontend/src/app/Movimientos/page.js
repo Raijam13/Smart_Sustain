@@ -11,9 +11,7 @@ import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { useEffect, useState } from 'react';
 import peticion from '../../api/Movimientos.js'
-
-
-let total = 0
+import MovTotal from '../../api/MovimientosTotal.js'
 
 
 /*
@@ -64,12 +62,14 @@ const movimientos = () => {
     /*let usuarioCache= cache()
     let tabla = await peticion()*/
     const [tabla, setTabla] = useState([])
+    const [total, setTotal] = useState(0)
 
     useEffect(() => {
         
         const storedUserData = localStorage.getItem('userData');
         const datos = storedUserData ? JSON.parse(storedUserData) : null;
         setTabla(peticion(datos.id))
+        setTotal(MovTotal(datos.id))
         
         
 
