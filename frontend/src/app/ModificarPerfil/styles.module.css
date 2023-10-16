@@ -141,4 +141,28 @@
     font-size: 20px;
     color: #1C2833;
   }
+
+  .botonCancelar{
+    border-radius: 15px;
+    border-color: #1C2833;
+    background-color: white;
+    color: #1C2833;
+  }
   
+  .botonCancelar:hover{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: gainsboro;
+    border-color: #1C2833;
+
+}
+  
+  .botonConfirmar{
+    border-radius: 15px;
+
+  }
+  
+  .lista{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1C2833;
+
+  }
