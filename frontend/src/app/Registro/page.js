@@ -22,10 +22,10 @@ const Registro = () => {
   
 
    const enviarRegistro = () => {
-   let nombres = document.getElementById("registro_nombres".value);
-   let apellidos = document.getElementById("registro_apellidos".value);
-   let correo = document.getElementById("registro_correo".value);
-   let contraseña = document.getElementById("registro_contraseña".value);
+   let nombres = document.getElementById("registro_nombres").value
+   let apellidos = document.getElementById("registro_apellidos").value
+   let correo = document.getElementById("registro_correo").value
+   let contraseña = document.getElementById("registro_contraseña").value
 
    if (nombres === '' || apellidos === '' || correo === '' || contraseña === '') {
     alert('Por favor, complete todos los campos.');
@@ -33,10 +33,10 @@ const Registro = () => {
   }
 
   // Verifica si la contraseña es un número entero
-  if (!Number.isInteger(Number(contraseña))) {
+  /*if (!Number.isInteger(Number(contraseña))) {
     alert('La contraseña debe ser un número entero.');
     return;
-  }
+  }*/
     
     registro(nombres,apellidos,correo,contraseña)
 
@@ -81,7 +81,26 @@ const Registro = () => {
                     </Col>
 
                     <Col md={{ span: 0, offset: 0 }}>
-                        <Link href='/Login'> <Button type="submit" className= {Styles.registrarse} onClick={enviarRegistro()}  >Registrarme</Button></Link>
+                        <Link href='/Login'> <Button type="submit" className= {Styles.registrarse} onClick={function(){
+                            let nombres = document.getElementById("registro_nombres").value
+                            let apellidos = document.getElementById("registro_apellidos").value
+                            let correo = document.getElementById("registro_correo").value
+                            let contraseña = document.getElementById("registro_contraseña").value
+                         
+                            if (nombres === '' || apellidos === '' || correo === '' || contraseña === '') {
+                             alert('Por favor, complete todos los campos.');
+                             return;
+                           }
+                         
+                           // Verifica si la contraseña es un número entero
+                           /*if (!Number.isInteger(Number(contraseña))) {
+                             alert('La contraseña debe ser un número entero.');
+                             return;
+                           }*/
+                             
+                             registro(nombres,apellidos,correo,contraseña)
+                         
+                        }}  >Registrarme</Button></Link>
                     </Col>
                 </Col>
             </Row>
