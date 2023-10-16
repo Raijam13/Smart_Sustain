@@ -19,9 +19,10 @@ import logo_perfil from "../Imagenes/Perfil.png";
 import deleteacc from '../../api/deleteacc.js'
 import cargarperfil from '../../api/perfil.js'
 import { useEffect, useState } from 'react';
+import cambiarnombre from '../../api/cambiarnombre.js'
 
 
-let id
+let id = JSON.parse( localStorage.getItem('userData')).id
 
 function CambiarNombres(props) {
 
@@ -40,10 +41,10 @@ function CambiarNombres(props) {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className={Styles.datos_modificar} controlId="Nombres">
+            <Form.Group className={Styles.datos_modificar}>
               <Form.Label>Nombres: </Form.Label>
               <Form.Control
-                placeholder="Escribir nombres"
+                placeholder="Escribir nombres"  id="Nombres"
                 autoFocus
               />
             </Form.Group>
@@ -53,7 +54,11 @@ function CambiarNombres(props) {
           <Button className={Styles.botones_recuadro} onClick={props.onHide}>
             Cerrar
           </Button>
-          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+          <Button className={Styles.botones_recuadro} onClick={function(){
+            const input = document.getElementById("Nombres") as HTMLInputElement
+            let nombres = input.value
+            cambiarnombre(id, nombres)
+          }}>
             Guardar cambios
           </Button>
         </Modal.Footer>
@@ -321,7 +326,7 @@ const ModificarPerfil = () => {
                     <button onClick={() => setModalShow(true)} className= {Styles.col3}> Nombres: {nombre} <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
                   </Row> 
                   <Row>
-                    <button  onClick={() => setModalShow2(true)} className= {Styles.col3}> Apellidos: {apellido} Díaz <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
+                    <button  onClick={() => setModalShow2(true)} className= {Styles.col3}> Apellidos: {apellido}  <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
                   </Row>
                   <Row>
                     <button onClick={() => setModalShow3(true)} className= {Styles.col3}> Correo electrónico: {email} <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
