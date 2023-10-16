@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+<Route path="/eliminarmovimiento" component={EliminarMovimiento} />
 
 const EliminarMovimiento = () => {
     // Definir un estado para almacenar los movimientos

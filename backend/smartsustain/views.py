@@ -3,11 +3,41 @@ from .models import *
 from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
-# Create your views here.
+
 wrongtype = "Tipo de petición no soportado para la operación"
 
+from django.shortcuts import render
 
+@csrf_exempt
+def EliminarMovimiento(request):
+    if request.method == 'GET':
+        # Obtiene todos los movimientos desde la base de datos
+        movimientos = Movimiento.objects.all()
 
+        # Convierte los movimientos a un formato JSON
+        movimientos_data = [{'id': movimiento.id, 'descripcion': movimiento.descripcion, 'monto': movimiento.monto} for movimiento in movimientos]
+
+        # Retorna los movimientos como respuesta JSON
+        return JsonResponse({'movimientos': movimientos_data})
+
+    elif request.method == 'POST':
+        # Obtiene el ID del movimiento a eliminar desde los datos de la solicitud
+        movimiento_id = request.POST.get('id')
+
+        try:
+            # Intenta obtener el movimiento por su ID
+            movimiento = Movimiento.objects.get(id=movimiento_id)
+            
+            # Elimina el movimiento
+            movimiento.delete()
+            
+            return JsonResponse({'mensaje': 'Movimiento eliminado exitosamente'})
+        except Movimiento.DoesNotExist:
+            # Si el movimiento no existe, devuelve un mensaje de error
+            return JsonResponse({'error': 'El movimiento no existe'}, status=404)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+    
 @csrf_exempt
 def obtenermovimientos(request):
     if request.method == "POST":
