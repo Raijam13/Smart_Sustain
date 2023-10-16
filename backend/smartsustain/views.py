@@ -25,6 +25,17 @@ def obtenermovimientos(request):
         return HttpResponse(json.dumps(dict))
     else:
         return HttpResponse(wrongtype)
+
+from django.http import JsonResponse
+from .models import Usuario
+
+def obtener_usuarios(request):
+    if request.method == 'GET':
+        usuarios = Usuario.objects.all()
+        usuarios_data = [{'id': usuario.id, 'nombre': usuario.nombre, 'email': usuario.email} for usuario in usuarios]
+        return JsonResponse({'usuarios': usuarios_data})
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
     
 @csrf_exempt
 def validarlogin(request):
