@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 wrongtype = "Tipo de petición no soportado para la operación"
 
+
+
 @csrf_exempt
 def obtenermovimientos(request):
     if request.method == "POST":
