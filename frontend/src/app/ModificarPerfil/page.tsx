@@ -20,15 +20,14 @@ import deleteacc from '../../api/deleteacc.js'
 import cargarperfil from '../../api/perfil.js'
 import { useEffect, useState } from 'react';
 import cambiarnombre from '../../api/cambiarnombre.js'
+import cambiarapellido from '../../api/cambiarapellido.js'
+import cambiaremail from '../../api/cambiaremail.js'
+import cambiarclave from '../../api/cambiarclave.js'
 
 
 let id = JSON.parse( localStorage.getItem('userData')).id
 
 function CambiarNombres(props) {
-
-
-  
-
   return (
       <Modal
         {...props}
@@ -58,6 +57,7 @@ function CambiarNombres(props) {
             const input = document.getElementById("Nombres") as HTMLInputElement
             let nombres = input.value
             cambiarnombre(id, nombres)
+            props.onHide();
           }}>
             Guardar cambios
           </Button>
@@ -80,7 +80,7 @@ function Cambiarpellidos(props) {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className={Styles.datos_modificar}controlId="apellidos">
+            <Form.Group className={Styles.datos_modificar}controlId="Apellidos">
               <Form.Label>Apellidos: </Form.Label>
               <Form.Control
                 placeholder="Escribir apellidos"
@@ -93,7 +93,12 @@ function Cambiarpellidos(props) {
           <Button className={Styles.botones_recuadro} onClick={props.onHide}>
             Cerrar
           </Button>
-          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+          <Button className={Styles.botones_recuadro} onClick={function(){
+            const input = document.getElementById("Apellidos") as HTMLInputElement
+            let apellidos = input.value
+            cambiarapellido(id, apellidos)
+            props.onHide();
+          }}>
             Guardar cambios
           </Button>
         </Modal.Footer>
@@ -114,7 +119,7 @@ function Cambiarcorreo(props) {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group className={Styles.datos_modificar} controlId="correo">
+            <Form.Group className={Styles.datos_modificar} controlId="Email">
             <Form.Label>Correo electrónico: </Form.Label>
               <Form.Control
                 type="email"
@@ -128,7 +133,12 @@ function Cambiarcorreo(props) {
           <Button className={Styles.botones_recuadro} onClick={props.onHide}>
             Cerrar
           </Button>
-          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+          <Button className={Styles.botones_recuadro} onClick={function(){
+            const input = document.getElementById("Email") as HTMLInputElement
+            let email = input.value
+            cambiaremail(id, email)
+            props.onHide();
+          }}>
             Guardar cambios
           </Button>
         </Modal.Footer>
@@ -168,7 +178,7 @@ function Cambiarcontraseña(props) {
         </Modal.Header>
         <Modal.Body>
           <Form className={Styles.form} >
-           <Form.Group className={Styles.datos_modificar} controlId="contra">
+           <Form.Group className={Styles.datos_modificar} controlId="ContraseñaActual">
              <FloatingLabel controlId="floatingInput" label="Contraseña actual"> 
                 <Form.Control
                   type={showPassword ? 'text' : 'password'}
@@ -184,7 +194,7 @@ function Cambiarcontraseña(props) {
                 )}
                  </div>             
               </FloatingLabel>
-            <FloatingLabel controlId="floatingPassword2" label="Contraseña nueva">
+            <FloatingLabel controlId="ContraseñaNueva" label="Contraseña nueva">
             <Form.Control
                   type={showPassword2 ? 'text' : 'password'}
                   placeholder="Contraseña nueva"
@@ -199,7 +209,7 @@ function Cambiarcontraseña(props) {
                 )}
                  </div> 
             </FloatingLabel>
-            <FloatingLabel controlId="floatingPassword3" label="Confirmar contraseña">
+            <FloatingLabel controlId="ConfirmarContraseña" label="Confirmar contraseña">
             <Form.Control
                   type={showPassword3 ? 'text' : 'password'}
                   placeholder="Confirmar contraseña"
@@ -221,7 +231,25 @@ function Cambiarcontraseña(props) {
           <Button className={Styles.botones_recuadro} onClick={props.onHide}>
               Cerrar
           </Button>
-          <Button className={Styles.botones_recuadro} onClick={props.onHide}>
+          <Button className={Styles.botones_recuadro} onClick={function(){
+            const input = document.getElementById("ConfirmarContraseña") as HTMLInputElement
+            const input2 = document.getElementById("ContraseñaNueva") as HTMLInputElement
+            const input3 = document.getElementById("ContraseñaActual") as HTMLInputElement
+            let ConfirmarClave = input.value
+            let ClaveNueva = input2.value
+            let ClaveActual = input3.value
+
+            if(ConfirmarClave === ClaveNueva){
+              cambiarclave(id, ConfirmarClave)
+              props.onHide();
+              return;
+            }
+            else{
+              alert('La contraseña no coincide.');
+            }
+            
+           
+          }}>
               Guardar cambios
           </Button>
         </Modal.Footer>
