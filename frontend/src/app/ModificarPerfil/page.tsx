@@ -224,6 +224,48 @@ function Cambiarcontraseña(props) {
   );
 }
 
+  function Eliminarcuenta(props) {
+
+    const [mostrarAlerta, setMostrarAlerta] = useState(false);
+
+    const handleConfirmarClick = () => {
+      setMostrarAlerta(true);
+      setTimeout(() => {
+        setMostrarAlerta(false);
+        window.location.href = '/Login';
+      }, 2000); 
+    };
+
+    return (
+        <Modal
+          {...props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton className ={Styles.title_cambio}>
+            <Modal.Title>Eliminar cuenta de Smart Sustain</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Col>
+            ¿Confirmas que quieres eliminar tu cuenta de Smart Sustain?
+            <li className = {Styles.lista}>Se eliminará tu cuenta de forma permanente</li>
+            <li className = {Styles.lista}>Perderás acceso al servicio de Smart Sustain</li>
+            </Col>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button className={Styles.botonCancelar} onClick={props.onHide}>
+              Cancelar
+            </Button>
+            <Button className={Styles.botonConfirmar} onClick={handleConfirmarClick}>
+              Confirmar
+            </Button>
+          </Modal.Footer>
+        </Modal>
+    );
+  }
+  
+
 const ModificarPerfil = () => {
   const [nombre, setNombre] = useState("")
     const [apellido, setApellido] = useState("")
@@ -252,6 +294,7 @@ const ModificarPerfil = () => {
   const [modalShow2, setModalShow2] = React.useState(false);
   const [modalShow3, setModalShow3] = React.useState(false);
   const [modalShow4, setModalShow4] = React.useState(false);
+  const [modalShow5, setModalShow5] = React.useState(false);
 
   return(
       <Container fluid className={Styles.Login}>
@@ -297,14 +340,17 @@ const ModificarPerfil = () => {
                   onHide={() => setModalShow2(false)}
                   />
 
-                <Cambiarcorreo
-                show={modalShow3}
-                onHide={() => setModalShow3(false)}/>
+                  <Cambiarcorreo
+                  show={modalShow3}
+                  onHide={() => setModalShow3(false)}/>
 
-                <Cambiarcontraseña
-                show={modalShow4}
-                onHide={() => setModalShow4(false)}/>
-
+                  <Cambiarcontraseña
+                  show={modalShow4}
+                  onHide={() => setModalShow4(false)}/>
+                  
+                  <Eliminarcuenta
+                  show={modalShow5}
+                  onHide={() => setModalShow5(false)}/>
 
                 <Col className='eliminar'>
                   <Button className= {Styles.eliminar_boton_modif} onClick={function(){deleteacc(id)}}>Eliminar cuenta</Button>{' '}
