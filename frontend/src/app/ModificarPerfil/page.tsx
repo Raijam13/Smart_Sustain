@@ -148,6 +148,18 @@ function Cambiarcorreo(props) {
 
 function Cambiarcontraseña(props) {
 
+  const [pw, setPw] = useState("")
+  useEffect(function(){
+
+  const storedUserData = localStorage.getItem('userData');
+  const datos = storedUserData ? JSON.parse(storedUserData) : null;
+  id = datos.id
+  cargarperfil(id).then(user =>{
+      setPw(user.password)
+  }
+  )
+})
+
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -179,7 +191,7 @@ function Cambiarcontraseña(props) {
         <Modal.Body>
           <Form className={Styles.form} >
            <Form.Group className={Styles.datos_modificar} controlId="ContraseñaActual">
-             <FloatingLabel controlId="floatingInput" label="Contraseña actual"> 
+             <FloatingLabel controlId="ContraseñaActual" label={"Contraseña actual"}> 
                 <Form.Control
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Contraseña actual"
@@ -239,13 +251,13 @@ function Cambiarcontraseña(props) {
             let ClaveNueva = input2.value
             let ClaveActual = input3.value
 
-            if(ConfirmarClave === ClaveNueva){
+            if(ConfirmarClave === ClaveNueva && pw === ClaveActual){
               cambiarclave(id, ConfirmarClave)
               props.onHide();
               return;
             }
             else{
-              alert('La contraseña no coincide.');
+              alert('La contraseña no coincide o la clave actual es incorrecta');
             }
             
            
@@ -290,7 +302,7 @@ function Cambiarcontraseña(props) {
             <Button className={Styles.botonCancelar} onClick={props.onHide}>
               Cancelar
             </Button>
-            <Button className={Styles.botonConfirmar} onClick={handleConfirmarClick}>
+            <Button className={Styles.botonConfirmar} onClick={function(){deleteacc(id)}}>
               Confirmar
             </Button>
           </Modal.Footer>
