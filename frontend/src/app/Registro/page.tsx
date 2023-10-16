@@ -9,7 +9,7 @@ import Image from 'next/image';
 import logo from "../Imagenes/logo.jpg";
 import background from "../Imagenes/background.jpg"
 import Link from 'next/link';
-
+import register from '../../api/register.js'
 
 const Registro = () => {
 
@@ -35,16 +35,16 @@ const Registro = () => {
                     </Col>
                     <Col >  
                         <Row>
-                            <input type="text" className={Styles.form_control} name="Nombres" placeholder="Nombres:" />
+                            <input type="text" className={Styles.form_control} id="Nombres" placeholder="Nombres:" />
                         </Row>
                         <Row>
-                            <input type="text" className={Styles.form_control} name="Apellidos"  placeholder="Apellidos:" />
+                            <input type="text" className={Styles.form_control} id="Apellidos"  placeholder="Apellidos:" />
                         </Row>
                         <Row>
-                            <input type="text" className={Styles.form_control} name="correo"  placeholder="Correo electrónico:" />
+                            <input type="text" className={Styles.form_control} id="correo"  placeholder="Correo electrónico:" />
                         </Row>
                         <Row>
-                            <input type="password" className={Styles.form_control} name="contraseña"  placeholder="Contraseña:" />
+                            <input type="password" className={Styles.form_control} id="contraseña"  placeholder="Contraseña:" />
                         </Row>
                     </Col>
 

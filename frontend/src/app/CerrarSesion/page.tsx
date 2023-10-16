@@ -8,7 +8,12 @@ import Image from 'next/image';
 import logOut from "../Imagenes/LogOut.png";
 import background from "../Imagenes/background.jpg"
 
+let userdata = {
+    resp: "no_login",
+    id: "N/A",
+    user:"no_login"}
 
+    localStorage.setItem('userData', JSON.stringify(userdata));
 const CerrarSesion = () => {
 
     return(
