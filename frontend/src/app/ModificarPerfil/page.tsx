@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
-import React, { useState } from 'react';
+import React from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { useRouter } from 'next/navigation';
 import Modal from 'react-bootstrap/Modal';
@@ -16,10 +16,17 @@ import background from "../Imagenes/background.jpg"
 import Barra_superior from '../../components/barra/barra_superior';
 import Barra_inferior from '../../components/barra/barra_inferior';
 import logo_perfil from "../Imagenes/Perfil.png";
-import Alert from 'react-bootstrap/Alert';
+import deleteacc from '../../api/deleteacc.js'
+import cargarperfil from '../../api/perfil.js'
+import { useEffect, useState } from 'react';
 
+
+let id
 
 function CambiarNombres(props) {
+
+
+  
 
   return (
       <Modal
@@ -260,6 +267,28 @@ function Cambiarcontraseña(props) {
   
 
 const ModificarPerfil = () => {
+  const [nombre, setNombre] = useState("")
+    const [apellido, setApellido] = useState("")
+    const [email, setEmail] = useState("")
+    const [pw, setPw] = useState("")
+  useEffect(function(){
+
+    const storedUserData = localStorage.getItem('userData');
+    const datos = storedUserData ? JSON.parse(storedUserData) : null;
+    id = datos.id
+    cargarperfil(id).then(user =>{
+        setNombre(user.nombre)
+        setApellido(user.apellido)
+        setEmail(user.email)
+        setPw(user.password)
+    }
+    )
+  })
+  const router = useRouter();
+
+  const handlePerfil = () => {
+    router.push('./Perfil'); 
+  };
 
   const [modalShow, setModalShow] = React.useState(false);
   const [modalShow2, setModalShow2] = React.useState(false);
@@ -289,16 +318,16 @@ const ModificarPerfil = () => {
                     </Col>
               
                   <Row >
-                    <button onClick={() => setModalShow(true)} className= {Styles.col3}> Nombres: Rosa María <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
+                    <button onClick={() => setModalShow(true)} className= {Styles.col3}> Nombres: {nombre} <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
                   </Row> 
                   <Row>
-                    <button  onClick={() => setModalShow2(true)} className= {Styles.col3}> Apellidos: Torres Díaz <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
+                    <button  onClick={() => setModalShow2(true)} className= {Styles.col3}> Apellidos: {apellido} Díaz <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
                   </Row>
                   <Row>
-                    <button onClick={() => setModalShow3(true)} className= {Styles.col3}> Correo electrónico: rtorres@gmail.com <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
+                    <button onClick={() => setModalShow3(true)} className= {Styles.col3}> Correo electrónico: {email} <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
                   </Row>
                   <Row>
-                    <button onClick={() => setModalShow4(true)} className= {Styles.col3}> Contraseña: ******** <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
+                    <button onClick={() => setModalShow4(true)} className= {Styles.col3}> Contraseña: {pw} <span  className= {Styles.col3icono}> <i className="bi bi-chevron-right"></i> </span></button>
                   </Row>
 
                   <CambiarNombres
@@ -324,7 +353,7 @@ const ModificarPerfil = () => {
                   onHide={() => setModalShow5(false)}/>
 
                 <Col className='eliminar'>
-                  <Button onClick={() => setModalShow5(true)} className= {Styles.eliminar_boton_modif}>Eliminar cuenta</Button>
+                  <Button className= {Styles.eliminar_boton_modif} onClick={function(){deleteacc(id)}}>Eliminar cuenta</Button>{' '}
                 </Col>
                 <Row className={Styles.barra_inferior}>
                   <Barra_inferior></Barra_inferior>
