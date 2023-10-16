@@ -1,5 +1,5 @@
 
-const Movimientos = async function(id){
+const MovTotal = async function(id){
     const retorno = []
     
     let total= 0;
@@ -17,18 +17,10 @@ const Movimientos = async function(id){
     const list = data.lista
     total = 0
     list.forEach(element => {
-        let persona = element.usuario
         let cantidad = element.cantidad
         total = total+cantidad
-        let fecha = element.fecha
-        let elemento = <tr>
-            <td>{persona}</td>
-            <td>{cantidad}</td>
-            <td>{fecha}</td>
-        </tr>
-        retorno.push(elemento)
     });
-    return retorno
+    return total
 }
 
-export default Movimientos;
+export default MovTotal;
