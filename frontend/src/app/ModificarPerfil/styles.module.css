@@ -118,4 +118,27 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.form_label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20px;
+}
 
+.form_floatinglabel{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1C2833;
+
+}
+
+.form{
+    margin-bottom: 20px;
+}
+
+.staticIcon {
+    position: absolute;
+    left: 720px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #1C2833;
+  }
+  
