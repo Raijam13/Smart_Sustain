@@ -14,6 +14,8 @@ import Image from 'next/image';
 import Barra_superior from '../../components/barra/barra_superior';
 import Barra_inferior from '../../components/barra/barra_inferior';
 import logo_perfil from "../Imagenes/Perfil.png";
+import cargarperfil from '../../api/perfil.js'
+import deleteacc from '../../api/deleteacc.js'
 
 const Perfil = () => {
 
@@ -26,6 +28,25 @@ const Perfil = () => {
   const handleInicio = () => {
     router.push('./Inicio'); 
   };
+
+  const [nombre, setNombre] = useState("")
+  const [apellido, setApellido] = useState("")
+  const [email, setEmail] = useState("")
+  const [pw, setPw] = useState("")
+  let id
+
+  useEffect(function(){
+    const storedUserData = localStorage.getItem('userData');
+    const datos = storedUserData ? JSON.parse(storedUserData) : null;
+    id = datos.id
+    cargarperfil(id).then(user =>{
+        setNombre(user.nombre)
+        setApellido(user.apellido)
+        setEmail(user.email)
+        setPw(user.password)
+    }
+    )
+  })
 
   return(
         <Container  fluid className={Styles.Login}>
@@ -53,30 +74,25 @@ const Perfil = () => {
                     </Col>
                     <Col >  
                         <Row className={Styles.form_control}>
-                            Nombre: Rosa María
+                            Nombre: {nombre}
                         </Row>
                         <Row className={Styles.form_control}>
-                           Apellidos: Torres Díaz
+                           Apellidos: {apellido}
                         </Row>
                         <Row className={Styles.form_control}>
-                             Correo electrónico: rtorres@gmail.com
+                             Correo electrónico: {email}
                         </Row>
                         <Row className={Styles.form_control}>
-                            Contraseña: *********
+                            Contraseña: {pw}
                         </Row>
-                        <Row className={Styles.form_control}>
-                             Usuario: rTorres
-                        </Row>
-                        <Row className={Styles.form_control}>
-                            Parentesco: Titular
-                        </Row>
+                        
                     </Col>
                     <Row fluid>
                         <Col className={Styles.modificar}>
                             <Button  onClick={handleModificarPerfil} className= {Styles.modificar_boton}>Modificar datos</Button>{' '}
                         </Col>
                         <Col className={Styles.eliminar}>
-                            <Button  className= {Styles.eliminar_boton}>Eliminar cuenta</Button>{' '}
+                            <Button  className= {Styles.eliminar_boton} onClick={function(){deleteacc(id)}}>Eliminar cuenta</Button>{' '}
                         </Col>
                         
                     </Row>

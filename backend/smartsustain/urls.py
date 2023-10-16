@@ -13,4 +13,5 @@ urlpatterns = [
     path("crearmovimiento", views.crearmovimiento),
     path("modmovimiento", views.modmovimiento),
     path("deletemovimiento", views.borrarmovimiento),
+    path("perfil", views.perfil),
 ]

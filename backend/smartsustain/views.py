@@ -173,3 +173,23 @@ def borrarmovimiento(request):
         return HttpResponse(json.dumps(resp))
     else:
         return HttpResponse(wrongtype)
+
+@csrf_exempt
+def perfil(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        id = data["id"]
+        user = Usuario.objects.filter(pk=id).first()
+        name = user.nombre
+        surname = user.apellido
+        email = user.email
+        pw = user.password
+        usuario = {
+            "nombre" : name,
+            "apellido" : surname,
+            "email" : email,
+            "password" : pw
+        }
+        return HttpResponse(json.dumps(usuario))
+    else:
+        return HttpResponse(wrongtype)
