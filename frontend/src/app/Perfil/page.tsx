@@ -74,11 +74,7 @@ const Perfil = () => {
                     <Row fluid>
                         <Col className={Styles.modificar}>
                             <Button  onClick={handleModificarPerfil} className= {Styles.modificar_boton}>Modificar datos</Button>{' '}
-                        </Col>
-                        <Col className={Styles.eliminar}>
-                            <Button  className= {Styles.eliminar_boton}>Eliminar cuenta</Button>{' '}
-                        </Col>
-                        
+                        </Col> 
                     </Row>
               </Col>
               <Row className={Styles.barra_inferior}>
