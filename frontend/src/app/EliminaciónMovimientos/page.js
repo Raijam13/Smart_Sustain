@@ -32,10 +32,7 @@ const EliminarMovimiento = () => {
   
     // Función para eliminar un movimiento por su ID
     const eliminarMovimiento = (id) => {
-      // acá poner lógica para eliminar el movimiento.
-      // Requiere API o una función que maneje la eliminación.
-  
-      // Simulación de eliminación actualizando el estado:
+      
       setMovimientos((movimientos) => movimientos.filter((movimiento) => movimiento.id !== id));
     };
   

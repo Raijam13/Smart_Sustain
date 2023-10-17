@@ -91,10 +91,6 @@ const Perfil = () => {
                         <Col className={Styles.modificar}>
                             <Button  onClick={handleModificarPerfil} className= {Styles.modificar_boton}>Modificar datos</Button>{' '}
                         </Col>
-                        <Col className={Styles.eliminar}>
-                            <Button  className= {Styles.eliminar_boton} onClick={function(){deleteacc(id)}}>Eliminar cuenta</Button>{' '}
-                        </Col>
-                        
                     </Row>
               </Col>
               <Row className={Styles.barra_inferior}>
