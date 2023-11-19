@@ -8,6 +8,7 @@ import Image from 'next/image';
 import logOut from "../Imagenes/LogOut.png";
 import background from "../Imagenes/background.jpg"
 
+
 let userdata = {
     resp: "no_login",
     id: "N/A",

@@ -1,11 +1,6 @@
 'use client';
-import Styles from './styles.module.css'
-import 'bootstrap/dist/css/bootstrap.css'
-import React from 'react';
-import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/esm/Button';
+import Styles from './styles.module.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
