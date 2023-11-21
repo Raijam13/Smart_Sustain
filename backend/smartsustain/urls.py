@@ -22,4 +22,5 @@ urlpatterns = [
     path("crearfamilia",views.crearfamilia),
     path("unirfamilia",views.unirfamilia),
     path("crearobjetivo",views.crearobjetivo),
+    path("obtenerrecomendacion",views.obtenerrecomendacion),
 ]

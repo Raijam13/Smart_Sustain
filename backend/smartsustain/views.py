@@ -4,8 +4,9 @@ from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect #
-from .models import Gasto    #
+from .models import Movimiento    #
 from .forms import GastoForm #
+import random
 
 wrongtype = "Tipo de petición no soportado para la operación"
 
@@ -308,5 +309,27 @@ def crearobjetivo(request):
         obj = Objetivo(usuario = user, categoria = cat, nombre = name, cantidad_deseada = desired, cantidad_alcanzada = achieved, fecha_inicio = start, fecha_fin = finish)
         obj.save()
         return HttpResponse("todo ok")
+    else:
+        return HttpResponse(wrongtype)
+
+@csrf_exempt
+def obtenerrecomendacion(request):
+    if request.method == 'GET':
+        recomendaciones = [
+            "Pequeñas compras pueden sumar. Piensa dos veces antes de gastar en cosas innecesarias. ¡Cada moneda cuenta!",
+            "Establece metas de ahorro mensuales y desafíate a ti mismo para alcanzarlas. ¡Cada logro te acerca más al tesoro!",
+            "Invierte tiempo en aprender sobre finanzas personales. ¡Mejorar tus habilidades financieras es como subir de nivel en el juego de la vida!",
+            "Descubre la tierra de los objetos de segunda mano. ¡Muchos tesoros esperan a ser encontrados a precios más bajos!",
+            "Afina tus habilidades de comparación antes de comprar. ¡No te conformes con el primer precio que encuentres, busca la mejor oferta!",
+            "Crea tus propias pociones mágicas de limpieza y cuidado personal en casa. ¡Ahorrarás oro y evitarás los encantamientos de precios altos!",
+            "Anticípate a eventos financieros importantes como un verdadero estratega. La planificación previa es clave para superar cualquier desafío.",
+            "Planifica comidas en grupo para compartir gastos. ¡La estrategia del banquete es un poderoso hechizo para ahorrar oro mientras disfrutas de la compañía!",
+            "Desarrolla tus habilidades de negociación para obtener mejores tratos. ¡La diplomacia financiera es una herramienta poderosa en tu arsenal!",
+            "No te limites a una sola fuente de oro. Diversifica tus fuentes de ingresos para fortalecer tu posición financiera y enfrentar cualquier emboscada económica."
+        ]
+        index = random.randint(0, len(recomendaciones))
+        rec = recomendaciones[index]
+        return HttpResponse(rec)
+
     else:
         return HttpResponse(wrongtype)

@@ -1,7 +1,8 @@
 from django import forms
-from .models import Gasto
+from .models import Movimiento
 
 class GastoForm(forms.ModelForm):
     class Meta:
-        model = Gasto
-        fields = ['categoria', 'cantidad', 'fecha']
+        model = Movimiento
+        #fields = ['categoria', 'cantidad', 'fecha']
+        fields = ['cantidad', 'fecha']
