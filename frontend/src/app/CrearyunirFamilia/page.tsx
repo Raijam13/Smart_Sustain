@@ -136,7 +136,9 @@ const CrearyunirFamilia = () => {
                     <Row>
                         <Col>
                             <Button  onClick={() => setModalShow(true)} size="lg"  className={Styles.botoncrearfamilia}>Crear una familia</Button>
+                            <Button onClick={() => setModalShow(true)} size="lg"  className={Styles.botonunirfamilia}> Unirse a una Familia   </Button>
                         </Col>
+                       
                     </Row>
                     <CrearFamilia
                     show={modalShow}

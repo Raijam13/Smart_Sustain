@@ -51,6 +51,14 @@
     background-color: #d49901;
     border-color: #d49901;
 }
+.botonunirfamilia{
+    font-size: 15px;
+    width: 20rem;
+    margin-left: 5.5rem;
+    background-color: #d49901;
+    border-color: #d49901;
+    margin-top:  10px;
+}
 
 .botoncrearfamilia:hover{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
