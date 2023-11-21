@@ -263,3 +263,50 @@ def obtener_usuarios(request):
         return JsonResponse({'usuarios': usuarios_data})
     else:
         return JsonResponse({'error': 'Método no permitido'}, status=405)
+
+@csrf_exempt
+def crearfamilia(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user = Usuario.objects.get(pk=data["id"])
+        name = data["name"]
+        desc = data["desc"]
+        fam = Familia(nombre = name, descripcion = desc)
+        fam.save()
+        famid = Familia.objects.get(pk=fam.pk)
+        uxf = UsuarioXFamilia(usuario = user, familia = famid, admin = True)
+        uxf.save()
+        dictResponse = {"famid" : fam.pk}
+        return HttpResponse(json.dumps(dictResponse))
+    else:
+        return HttpResponse(wrongtype)
+
+@csrf_exempt
+def unirfamilia(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user = Usuario.objects.get(pk = data["user"])
+        fam = Familia.objects.get(pk = data["familia"])
+        uxf = UsuarioXFamilia(usuario = user, familia = fam)
+        uxf.save()
+        cadena = "El usuario " + user.nombre + " se unio a la familia " + fam.nombre
+        return HttpResponse(cadena)
+    else:
+        return HttpResponse(wrongtype)
+
+@csrf_exempt
+def crearobjetivo(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user = Usuario.objects.get(pk=data["user"])
+        cat = Categoria.objects.get(pk=data["cat"])
+        name = data["name"]
+        desired = data["desired"]
+        achieved = data["achieved"]
+        start = data["start"]
+        finish = data["finish"]
+        obj = Objetivo(usuario = user, categoria = cat, nombre = name, cantidad_deseada = desired, cantidad_alcanzada = achieved, fecha_inicio = start, fecha_fin = finish)
+        obj.save()
+        return HttpResponse("todo ok")
+    else:
+        return HttpResponse(wrongtype)

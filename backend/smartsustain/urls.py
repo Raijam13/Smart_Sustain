@@ -19,4 +19,7 @@ urlpatterns = [
     path("eliminarmovimiento", views.EliminarMovimiento),
     path('crear_gasto/', crear_gasto, name='crear_gasto'),#
     path('visualizar_gastos/', visualizar_gastos, name='visualizar_gastos'),#
+    path("crearfamilia",views.crearfamilia),
+    path("unirfamilia",views.unirfamilia),
+    path("crearobjetivo",views.crearobjetivo),
 ]
