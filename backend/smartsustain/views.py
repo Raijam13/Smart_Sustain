@@ -274,3 +274,20 @@ def unirfamilia(request):
         return HttpResponse(cadena)
     else:
         return HttpResponse(wrongtype)
+
+@csrf_exempt
+def crearobjetivo(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user = Usuario.objects.get(pk=data["user"])
+        cat = Categoria.objects.get(pk=data["cat"])
+        name = data["name"]
+        desired = data["desired"]
+        achieved = data["achieved"]
+        start = data["start"]
+        finish = data["finish"]
+        obj = Objetivo(usuario = user, categoria = cat, nombre = name, cantidad_deseada = desired, cantidad_alcanzada = achieved, fecha_inicio = start, fecha_fin = finish)
+        obj.save()
+        return HttpResponse("todo ok")
+    else:
+        return HttpResponse(wrongtype)

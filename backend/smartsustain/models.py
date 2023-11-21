@@ -48,8 +48,8 @@ class Objetivo(models.Model):
     nombre = models.CharField(max_length=255)
     cantidad_deseada = models.FloatField()
     cantidad_alcanzada = models.FloatField()
-    fecha_inicio = models.DateTimeField()
-    fecha_fin = models.DateTimeField()
+    fecha_inicio = models.CharField(max_length=255)
+    fecha_fin = models.CharField(max_length=255)
     
     def __str__(self):
         return self.nombre

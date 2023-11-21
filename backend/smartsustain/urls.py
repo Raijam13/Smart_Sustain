@@ -18,4 +18,5 @@ urlpatterns = [
     path("eliminarmovimiento", views.EliminarMovimiento),
     path("crearfamilia",views.crearfamilia),
     path("unirfamilia",views.unirfamilia),
+    path("crearobjetivo",views.crearobjetivo),
 ]
