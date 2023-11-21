@@ -16,4 +16,6 @@ urlpatterns = [
     path("perfil", views.perfil),
     path("obtenerusuarios", views.obtener_usuarios),  
     path("eliminarmovimiento", views.EliminarMovimiento),
+    path("crearfamilia",views.crearfamilia),
+    path("unirfamilia",views.unirfamilia),
 ]
