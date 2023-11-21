@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import crear_gasto, visualizar_gastos
 
 urlpatterns = [
     path("movimientos", views.obtenermovimientos),
@@ -16,6 +17,9 @@ urlpatterns = [
     path("perfil", views.perfil),
     path("obtenerusuarios", views.obtener_usuarios),  
     path("eliminarmovimiento", views.EliminarMovimiento),
+    path('crear_gasto/', crear_gasto, name='crear_gasto'),#
+    path('visualizar_gastos/', visualizar_gastos, name='visualizar_gastos'),#
     path("crearfamilia",views.crearfamilia),
     path("unirfamilia",views.unirfamilia),
+    path("crearobjetivo",views.crearobjetivo),
 ]

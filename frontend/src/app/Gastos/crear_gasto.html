@@ -1,0 +1,6 @@
+<h2>Crear Gasto</h2>
+<form method="post" action="{% url 'crear_gasto' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>

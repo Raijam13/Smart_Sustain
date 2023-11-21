@@ -3,10 +3,29 @@ from .models import *
 from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, redirect #
+from .models import Gasto    #
+from .forms import GastoForm #
 
 wrongtype = "Tipo de petición no soportado para la operación"
 
 from django.shortcuts import render
+
+def crear_gasto(request):
+    if request.method == 'POST':
+        form = GastoForm(request.POST)
+        if form.is_valid():
+            gasto = form.save(commit=False)
+            gasto.usuario = request.user
+            gasto.save()
+            return redirect('visualizar_gastos')
+    else:
+        form = GastoForm()
+    return render(request, 'crear_gasto.html', {'form': form})
+
+def visualizar_gastos(request):
+    gastos = Movimiento.objects.filter(usuario=request.user)
+    return render(request, 'visualizar_gastos.html', {'gastos': gastos})
 
 @csrf_exempt
 def EliminarMovimiento(request):
@@ -272,5 +291,22 @@ def unirfamilia(request):
         uxf.save()
         cadena = "El usuario " + user.nombre + " se unio a la familia " + fam.nombre
         return HttpResponse(cadena)
+    else:
+        return HttpResponse(wrongtype)
+
+@csrf_exempt
+def crearobjetivo(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        user = Usuario.objects.get(pk=data["user"])
+        cat = Categoria.objects.get(pk=data["cat"])
+        name = data["name"]
+        desired = data["desired"]
+        achieved = data["achieved"]
+        start = data["start"]
+        finish = data["finish"]
+        obj = Objetivo(usuario = user, categoria = cat, nombre = name, cantidad_deseada = desired, cantidad_alcanzada = achieved, fecha_inicio = start, fecha_fin = finish)
+        obj.save()
+        return HttpResponse("todo ok")
     else:
         return HttpResponse(wrongtype)
