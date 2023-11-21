@@ -1,0 +1,6 @@
+<h2>Gastos Personales</h2>
+<ul>
+    {% for gasto in gastos %}
+        <li>{{ gasto.categoria }} - {{ gasto.cantidad }} - {{ gasto.fecha }}</li>
+    {% endfor %}
+</ul>
