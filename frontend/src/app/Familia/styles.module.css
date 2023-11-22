@@ -3,7 +3,7 @@
     border: 1px;
     border-radius: 40px ;
     width: 500px;
-    height: 500px;
+    height: 530px;
     background-color: rgb(248, 248, 154);
     position: fixed;
 }
@@ -70,6 +70,21 @@
     background-color: gainsboro;
     border-color: #1C2833;
 
+}
+
+.boton_eliminar_miembro {
+    font-size: 15px;
+    width: 20rem;
+    margin-left: 5.5rem;
+    margin-top: 10px;
+    background-color: #ca1414;
+    border-color: #ca1414;
+}
+
+.boton_eliminar_miembro:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: gainsboro;
+    border-color: gainsboro;
 }
 
 .datos_modificar{
