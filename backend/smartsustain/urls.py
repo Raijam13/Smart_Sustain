@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 from .views import crear_gasto, visualizar_gastos
 from .views import visualizar_objetivos
+from .views import visualizar_gastos_familiares
+from .views import visualizar_notificaciones
 
 urlpatterns = [
     path("movimientos", views.obtenermovimientos),
@@ -24,5 +26,7 @@ urlpatterns = [
     path("unirfamilia",views.unirfamilia),
     path("crearobjetivo",views.crearobjetivo),
     path("obtenerrecomendacion",views.obtenerrecomendacion),
-     path('visualizar_objetivos/', visualizar_objetivos, name='visualizar_objetivos'),#
+    path('visualizar_objetivos/', visualizar_objetivos, name='visualizar_objetivos'),#
+    path('visualizar_gastos_familiares/', visualizar_gastos_familiares, name='visualizar_gastos_familiares'), #
+    path('visualizar_notificaciones/', visualizar_notificaciones, name='visualizar_notificaciones'), #
 ]

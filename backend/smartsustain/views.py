@@ -9,9 +9,72 @@ from .forms import GastoForm #
 import random
 from django.http import JsonResponse
 from .models import Objetivo
+from django.views.decorators.csrf import csrf_exempt
+from .models import Movimiento, UsuarioXFamilia
+from .models import Notificacion, Usuario
 
 wrongtype = "Tipo de petición no soportado para la operación"
 
+@csrf_exempt
+def visualizar_gastos_familiares(request):
+    if request.method == 'POST':
+        try:
+            # Obtener datos de la solicitud
+            data = json.loads(request.body)
+            usuario_id = data.get("usuario_id")
+
+            # Validar que el usuario_id esté presente en los datos
+            if usuario_id is None:
+                return JsonResponse({'error': 'Se requiere el campo usuario_id en los datos'}, status=400)
+
+            # Obtener familia asociada al usuario
+            usuario_en_familia = UsuarioXFamilia.objects.get(usuario_id=usuario_id)
+            familia_id = usuario_en_familia.familia_id
+
+            # Obtener usuarios de la familia
+            usuarios_en_familia = UsuarioXFamilia.objects.filter(familia_id=familia_id)
+            usuario_ids = [usuario_en_familia.usuario_id for usuario_en_familia in usuarios_en_familia]
+
+            # Obtener gastos de todos los usuarios de la familia
+            gastos_familia = Movimiento.objects.filter(usuario_id__in=usuario_ids)
+
+            # Convertir gastos a formato JSON
+            gastos_data = [{'usuario': gasto.usuario.nombre, 'cantidad': gasto.cantidad, 'fecha': str(gasto.fecha)} for gasto in gastos_familia]
+
+            # Retorna los gastos como respuesta JSON
+            return JsonResponse({'gastos_familiares': gastos_data})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Los datos no son un objeto JSON válido'}, status=400)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+    
+@csrf_exempt
+def visualizar_notificaciones(request):
+    if request.method == 'POST':
+        try:
+            # Obtener datos de la solicitud
+            data = json.loads(request.body)
+            usuario_id = data.get("usuario_id")
+
+            # Validar que el usuario_id esté presente en los datos
+            if usuario_id is None:
+                return JsonResponse({'error': 'Se requiere el campo usuario_id en los datos'}, status=400)
+
+            # Obtener notificaciones del usuario
+            notificaciones = Notificacion.objects.filter(usuario_id=usuario_id)
+
+            # Convertir notificaciones a formato JSON
+            notificaciones_data = [{'nombre': notificacion.nombre, 'descripcion': notificacion.descripcion} for notificacion in notificaciones]
+
+            # Retorna las notificaciones como respuesta JSON
+            return JsonResponse({'notificaciones': notificaciones_data})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Los datos no son un objeto JSON válido'}, status=400)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+    
 @csrf_exempt
 def visualizar_objetivos(request):
     if request.method == 'POST':
