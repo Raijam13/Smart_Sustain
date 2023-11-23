@@ -12,8 +12,108 @@ from .models import Objetivo
 from django.views.decorators.csrf import csrf_exempt
 from .models import Movimiento, UsuarioXFamilia
 from .models import Notificacion, Usuario
+from .models import Categoria, Usuario
+
 
 wrongtype = "Tipo de petición no soportado para la operación"
+
+@csrf_exempt
+def crear_categoria(request):
+    if request.method == 'POST':
+        try:
+            # Obtener datos de la solicitud
+            data = json.loads(request.body)
+            usuario_id = data.get("usuario_id")
+            nombre_categoria = data.get("nombre_categoria")
+
+            # Validar que los campos requeridos estén presentes
+            if usuario_id is None or nombre_categoria is None:
+                return JsonResponse({'error': 'Se requieren los campos usuario_id y nombre_categoria'}, status=400)
+
+            # Crear la categoría asociada al usuario
+            usuario = Usuario.objects.get(pk=usuario_id)
+            categoria = Categoria(usuario=usuario, nombre=nombre_categoria)
+            categoria.save()
+
+            return JsonResponse({'mensaje': 'Categoría creada exitosamente'})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Los datos no son un objeto JSON válido'}, status=400)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+    
+@csrf_exempt
+def leer_categorias(request):
+    if request.method == 'POST':
+        try:
+            # Obtener datos de la solicitud
+            data = json.loads(request.body)
+            usuario_id = data.get("usuario_id")
+
+            # Validar que el campo usuario_id esté presente
+            if usuario_id is None:
+                return JsonResponse({'error': 'Se requiere el campo usuario_id en los datos'}, status=400)
+
+            # Obtener categorías del usuario
+            categorias = Categoria.objects.filter(usuario_id=usuario_id)
+
+            # Convertir categorías a formato JSON
+            categorias_data = [{'id': categoria.id, 'nombre': categoria.nombre} for categoria in categorias]
+
+            # Retorna las categorías como respuesta JSON
+            return JsonResponse({'categorias': categorias_data})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Los datos no son un objeto JSON válido'}, status=400)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+    
+@csrf_exempt
+def actualizar_categoria(request):
+    if request.method == 'POST':
+        try:
+            # Obtener datos de la solicitud
+            data = json.loads(request.body)
+            categoria_id = data.get("categoria_id")
+            nuevo_nombre = data.get("nuevo_nombre")
+
+            # Validar que los campos requeridos estén presentes
+            if categoria_id is None or nuevo_nombre is None:
+                return JsonResponse({'error': 'Se requieren los campos categoria_id y nuevo_nombre'}, status=400)
+
+            # Actualizar la categoría
+            categoria = Categoria.objects.get(pk=categoria_id)
+            categoria.nombre = nuevo_nombre
+            categoria.save()
+
+            return JsonResponse({'mensaje': 'Categoría actualizada exitosamente'})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Los datos no son un objeto JSON válido'}, status=400)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+
+@csrf_exempt
+def eliminar_categoria(request):
+    if request.method == 'POST':
+        try:
+            # Obtener datos de la solicitud
+            data = json.loads(request.body)
+            categoria_id = data.get("categoria_id")
+
+            # Validar que el campo categoria_id esté presente
+            if categoria_id is None:
+                return JsonResponse({'error': 'Se requiere el campo categoria_id en los datos'}, status=400)
+
+            # Eliminar la categoría
+            Categoria.objects.filter(pk=categoria_id).delete()
+
+            return JsonResponse({'mensaje': 'Categoría eliminada exitosamente'})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Los datos no son un objeto JSON válido'}, status=400)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
 
 @csrf_exempt
 def visualizar_gastos_familiares(request):

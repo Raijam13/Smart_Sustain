@@ -4,6 +4,7 @@ from .views import crear_gasto, visualizar_gastos
 from .views import visualizar_objetivos
 from .views import visualizar_gastos_familiares
 from .views import visualizar_notificaciones
+from .views import crear_categoria, leer_categorias, actualizar_categoria, eliminar_categoria
 
 urlpatterns = [
     path("movimientos", views.obtenermovimientos),
@@ -29,4 +30,8 @@ urlpatterns = [
     path('visualizar_objetivos/', visualizar_objetivos, name='visualizar_objetivos'),#
     path('visualizar_gastos_familiares/', visualizar_gastos_familiares, name='visualizar_gastos_familiares'), #
     path('visualizar_notificaciones/', visualizar_notificaciones, name='visualizar_notificaciones'), #
+     path('crear_categoria/', crear_categoria, name='crear_categoria'), #
+    path('leer_categorias/', leer_categorias, name='leer_categorias'), #
+    path('actualizar_categoria/', actualizar_categoria, name='actualizar_categoria'), #
+    path('eliminar_categoria/', eliminar_categoria, name='eliminar_categoria'), #
 ]
