@@ -1,7 +1,7 @@
 'use client';
 import Styles from './styles.module.css'
-import React, {Component} from 'react';
-import barra_superior from '../../components/barra/barra_superior.tsx'
+import React, { Component } from 'react';
+import Barra_superior from '../../components/barra/barra_superior';
 import Barra_inferior from '../../components/barra/barra_inferior';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,20 +13,19 @@ import { useState } from 'react';
 const notificaciones = () => {
 
 
-const[celdas,setCeldas] = useState();
+  const [celdas, setCeldas] = useState();
 
-const agregarFila = () => {
+  const agregarFila = () => {
     setCeldas(celdas + 1);
   };
 
 
-    return(
-        <div className={Styles.render}>
+  return (
+    <div className={Styles.render}>
       {/* Barra superior (puedes incluir aquí tu componente 'barra_superior') */}
-      <div className={Styles.barra_superior}>
-        {/* Aquí puedes incluir tu componente 'barra_superior' */}
-      </div>
-
+      <Row className={Styles.barra_superior}>
+        <Barra_superior></Barra_superior>
+      </Row>
       <div className={Styles.content}>
         <div className={Styles.panel}>
           <div className={Styles.Titulo}>
@@ -43,7 +42,7 @@ const agregarFila = () => {
                 </tr>
               </thead>
               <tbody>
-                
+
               </tbody>
             </table>
 
@@ -52,8 +51,12 @@ const agregarFila = () => {
           </div>
         </div>
       </div>
+      {/* Barra superior (puedes incluir aquí tu componente 'barra_inferior') */}
+      <Row className={Styles.barra_inferior}>
+        <Barra_inferior></Barra_inferior>
+      </Row>
     </div>
-    )
+  )
 }
 
 export default notificaciones;
