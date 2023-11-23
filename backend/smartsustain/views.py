@@ -7,11 +7,31 @@ from django.shortcuts import render, redirect #
 from .models import Movimiento    #
 from .forms import GastoForm #
 import random
+from django.http import JsonResponse
+from .models import Objetivo
 
 wrongtype = "Tipo de petición no soportado para la operación"
 
-from django.shortcuts import render
+@csrf_exempt
+def visualizar_objetivos(request):
+    if request.method == 'POST':
+        # Obtener los objetivos del usuario 
+        data = json.loads(request.body)
+        usuario_id = data["usuario_id"]
+        objetivos = Objetivo.objects.filter(usuario_id=usuario_id)
 
+        # Convertir objetivos a formato JSON
+        objetivos_data = [{'nombre': objetivo.nombre, 'cantidad_deseada': objetivo.cantidad_deseada,
+                           'cantidad_alcanzada': objetivo.cantidad_alcanzada, 'fecha_inicio': str(objetivo.fecha_inicio),
+                           'fecha_fin': str(objetivo.fecha_fin)} for objetivo in objetivos]
+
+        # Retorna los objetivos como respuesta JSON
+        return JsonResponse({'objetivos': objetivos_data})
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
+    
+
+@csrf_exempt
 def crear_gasto(request):
     if request.method == 'POST':
         form = GastoForm(request.POST)
@@ -23,10 +43,31 @@ def crear_gasto(request):
     else:
         form = GastoForm()
     return render(request, 'crear_gasto.html', {'form': form})
+@csrf_exempt
 
 def visualizar_gastos(request):
-    gastos = Movimiento.objects.filter(usuario=request.user)
-    return render(request, 'visualizar_gastos.html', {'gastos': gastos})
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            usuario_id = data['usuario_id']
+
+            # Validar que el usuario_id está presente en los datos
+            if usuario_id is None:
+                return JsonResponse({'error': 'Se requiere el campo usuario_id en los datos'}, status=400)
+
+            # Obtener los gastos del usuario 
+            gastos = Movimiento.objects.filter(usuario_id=usuario_id)
+
+            # Convertir gastos a formato JSON
+            gastos_data = [{'cantidad': gasto.cantidad, 'fecha': str(gasto.fecha)} for gasto in gastos]
+
+            # Retorna los gastos como respuesta JSON
+            return JsonResponse({'gastos': gastos_data})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Los datos no son un objeto JSON válido'}, status=400)
+    else:
+        return JsonResponse({'error': 'Método no permitido'}, status=405)
 
 @csrf_exempt
 def EliminarMovimiento(request):

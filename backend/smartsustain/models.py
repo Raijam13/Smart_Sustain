@@ -9,7 +9,6 @@ class Familia(models.Model):
     def __str__(self):
         return self.nombre
 
-
 class Usuario(models.Model):
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
@@ -50,11 +49,14 @@ class Objetivo(models.Model):
     nombre = models.CharField(max_length=255)
     cantidad_deseada = models.FloatField()
     cantidad_alcanzada = models.FloatField()
-    fecha_inicio = models.CharField(max_length=255)
-    fecha_fin = models.CharField(max_length=255)
+    fecha_inicio = models.DateField()
+    fecha_fin = models.DateField()
     
     def __str__(self):
         return self.nombre
+# models.py
+from django.db import models
+
 
 class UsuarioXFamilia(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
