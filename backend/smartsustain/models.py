@@ -2,13 +2,6 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import User
 
-
-class UsuarioXFamilia(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    familia = models.ForeignKey(Familia, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.usuario.nombre} {self.usuario.apellido} - {self.familia.nombre}"
 class Familia(models.Model):
     nombre = models.CharField(max_length=255)
     descripcion = models.TextField()
