@@ -54,6 +54,7 @@ class Objetivo(models.Model):
     
     def __str__(self):
         return self.nombre
+    
 # models.py
 from django.db import models
 
