@@ -11,7 +11,7 @@ import Form from 'react-bootstrap/Form'
 import { useState } from 'react';
 import React from 'react'
 
-const  crearObjetivos = (props) => {
+function  crearObjetivos  (props)  {
     return(
         <Modal
              {...props}
@@ -59,7 +59,6 @@ const objetivos  = () => {
     const [modalShow, setModalShow] = React.useState(false);
 
 
-
     return(
         <div className={Styles.render}>
             
@@ -86,7 +85,7 @@ const objetivos  = () => {
 
                              <div className={Styles.botonGroup}>
                                 <Button onClick={() => setModalShow(true)}  className={Styles.botones}>Crear Objetivos</Button>
-                            </div>
+                            </div>  
                             <crearObjetivos
                             show={modalShow}
                             onHide={() => setModalShow(false)}
