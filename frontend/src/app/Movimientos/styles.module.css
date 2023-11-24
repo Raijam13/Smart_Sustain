@@ -77,11 +77,14 @@
 .tabla_datos tr, .tabla_datos th{
     border: solid;
     border-color: black 1px;
+    background-color: red;
 }
 
 .tabla_datos th{
     background-color: rgb(246, 211, 33);
 }
+
+
 
 .modificar_movimiento{
     width: 100px;

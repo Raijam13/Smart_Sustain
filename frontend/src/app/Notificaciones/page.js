@@ -27,6 +27,8 @@ const notificaciones = () => {
         <Barra_superior></Barra_superior>
       </Row>
       <div className={Styles.content}>
+
+        
         <div className={Styles.panel}>
           <div className={Styles.Titulo}>
             <h1>Notificaciones</h1>

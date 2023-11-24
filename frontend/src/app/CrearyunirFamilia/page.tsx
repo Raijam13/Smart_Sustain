@@ -86,10 +86,76 @@ function CrearFamilia(props) {
     );
   }
 
+
+
+  function UnirFamilia(props) {
+    const [mostrarAlerta, setMostrarAlerta] = useState(false);
+    const router = useRouter();
+    
+    const handleUnirFamilia  = () => {
+        // Realiza la lógica o acción que desencadena la alerta
+        // Muestra la alerta durante 3 segundos
+        
+        setMostrarAlerta(true);
+        setTimeout(() => {
+        setMostrarAlerta(false);
+        router.push('/Familia');
+      // Redirige a otra pestaña después de mostrar la alerta y cerrar el modal
+        }, 1300);
+      };
+
+    return (
+        <Modal
+          {...props}
+          size="lg"
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+        >
+          <Modal.Header closeButton className ={Styles.title_cambio}>
+            <Modal.Title>Uniendose a una familia</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group className={Styles.grupo_datos}>
+                <Form.Label className={Styles.datos_modificar} >Apodo de familia </Form.Label>
+                <Form.Control
+                    className={Styles.boton_datos_modificar}
+                  placeholder="Escribir apodo"  
+                  id="apodo"
+                  autoFocus
+                />
+            </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button className={Styles.boton_cerrar} onClick={props.onHide}>
+              Cerrar
+            </Button>
+            <Button className={Styles.boton_crear} onClick={handleUnirFamilia}>
+              Crear familia
+            </Button>
+          </Modal.Footer>
+           {/* Renderiza la alerta si mostrarAlerta es true */}
+           {mostrarAlerta && (
+                    <Alert variant="success">
+                        <Alert.Heading>¡Éxito!</Alert.Heading>
+                        <p>Has creado una familia con éxito.</p>
+                    </Alert>
+                    )}
+        </Modal>
+    );
+  }
+
+
+
+
+
 const CrearyunirFamilia = () => {
 
   const [nombre, setNombre] = useState("")
   const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow2, setModalShow2] = React.useState(false);
+
   let id
 
   useEffect(function(){
@@ -134,15 +200,19 @@ const CrearyunirFamilia = () => {
                         </Col>
                     </Row>
                     <Row>
+                    
                         <Col>
                             <Button  onClick={() => setModalShow(true)} size="lg"  className={Styles.botoncrearfamilia}>Crear una familia</Button>
-                            <Button onClick={() => setModalShow(true)} size="lg"  className={Styles.botonunirfamilia}> Unirse a una Familia   </Button>
+                            <Button  onClick={() => setModalShow2(true)} size="lg"  className={Styles.botonunirFamilia}>Unirse a una Familia</Button>
                         </Col>
-                       
                     </Row>
                     <CrearFamilia
                     show={modalShow}
                     onHide={() => setModalShow(false)}
+                    />
+                    <UnirFamilia
+                    show={modalShow2}
+                    onHide={() => setModalShow2(false)}
                     />
                     
 
