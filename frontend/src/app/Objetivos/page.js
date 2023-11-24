@@ -1,6 +1,5 @@
 'use client'
 import Styles from './styles.module.css'
-import React from 'react';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col';
 import Barra_superior from '../../components/barra/barra_superior';
@@ -10,7 +9,7 @@ import Table from 'react-bootstrap/Table'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import { useState } from 'react';
-
+import React from 'react'
 
 const  crearObjetivos = (props) => {
     return(
@@ -57,7 +56,7 @@ const  crearObjetivos = (props) => {
 
 const objetivos  = () => {
 
-
+    const [modalShow, setModalShow] = React.useState(false);
 
 
 
@@ -86,9 +85,14 @@ const objetivos  = () => {
                             </div>
 
                              <div className={Styles.botonGroup}>
-                                <Button className={Styles.botones}>Crear Objetivos</Button>
+                                <Button onClick={() => setModalShow(true)}  className={Styles.botones}>Crear Objetivos</Button>
                             </div>
+                            <crearObjetivos
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                            />
                             
+
 
 
                         </div>
