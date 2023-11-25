@@ -21,13 +21,11 @@ const movimientos = () => {
     /*let usuarioCache= cache()
     let tabla = await peticion()*/
     const [tabla, setTabla] = useState([])
-    const [total, setTotal] = useState(0)
 
     useEffect(() => {
         const storedUserData = localStorage.getItem('userData');
         const datos = storedUserData ? JSON.parse(storedUserData) : null;
         setTabla(peticion(datos.id))
-        setTotal(MovTotal(datos.id))
 
     }, []);
  
