@@ -16,6 +16,7 @@ import Card from 'react-bootstrap/Card';
 import cargarperfil from '../../api/perfil.js'
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import Crear_Categoria from '../../api/crearCategoria.js';
 
 function EditarCategoria(props) {
   return (
