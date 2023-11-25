@@ -2,7 +2,6 @@
 import Styles from './styles.module.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import Container from 'react-bootstrap/esm/Container';
-import React from 'react';
 import Barra_superior from '../../components/barra/barra_superior';
 import Barra_inferior from '../../components/barra/barra_inferior';
 import Image from 'next/image';
