@@ -533,7 +533,8 @@ def obtenerrecomendacion(request):
         ]
         index = random.randint(0, len(recomendaciones))
         rec = recomendaciones[index]
-        return HttpResponse(rec)
+        dict = {"rec" : rec}
+        return HttpResponse(json.dumps(dict))
 
     else:
         return HttpResponse(wrongtype)

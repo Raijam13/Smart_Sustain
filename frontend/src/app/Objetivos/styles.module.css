@@ -1,91 +1,136 @@
+
+.Login{
+
+    display:flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100wh;
+    margin-right : 0 !important;
+    margin-left : 0 !important;
+    padding-right : 0 !important;
+    padding-left : 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.create_inicio{
+    margin-top: 60px;
+    border: 1px;
+    border-radius: 40px ;
+    width: 1050px;
+    height: 600px;
+    background-color: rgb(248, 248, 154);
+    position: fixed;
+}
+
 .barra_superior{
+    position: fixed;
     display: flex;
     width: 221vh;
     height: 100vh;
-
-    
 }
 
-.content{
-    height: 80%;
-    width: 100%;
-    margin-bottom: 20px;
+.barra_inferior{
+    margin-top: 650px;
+    position: fixed;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center
-}
-
-.render{
-    width: 100%;
+    width: 221vh;
     height: 100vh;
-    background-image: url('../Imagenes/background.jpg');
-    background-size: cover;
-    
+    margin-left: 0px;
 }
 
-.panel{
-    display: flex;
-    width: 120vh;
-    height: 100%; 
-    background-color: white;
-    border-radius: 5%;
-    border: 2px black solid ;
-    align-items: center;
-    flex-direction: column;
-}
-
-.titulos{
-    margin-top: 20px;
-   
-    display: flex;
-    margin: 30px;
-}
-
-.navegacion{
-    display: flex;
-    flex-direction: row;
-   
-    
-}
-.contador{
-    width: 120px;
+.title_login p{
+    font-size: 30px;
+    color:rgb(0, 0, 0);
+    margin-left: 0px;
+    margin-top: 40px;
     text-align: center;
-    margin-right: 100px;
-  
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.botonGroup{
-    display: flex;
-   
+.title2_login p{
+    font-size: 20px;
+    color:rgb(0, 0, 0);
+    margin-left: 30px;
+    margin-top: 40px;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title3_login p{
+    font-size: 20px;
+    color:rgb(0, 0, 0);
+    margin-left: 30px;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tabla_datos{
+    width: 600px;
+    margin-left: 230px;
     align-items: center;
-}
-.tabla{
-    width: 800px;
-    height: 60%;
-    padding: 10px;
-    display: flex;
-   
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.tabla tr, .tabla th{
+.tabla_datos tr, .tabla_datos th{
     border: solid;
-    border-color: black 3px;
+    border-color: black 1px;
 }
 
-.tabla th{
+.tabla_datos th{
     background-color: rgb(246, 211, 33);
-    padding: 10px;
-    width: 300px;
 }
 
-.tabla tr{
-    width: 300px;
+.modificar_movimiento{
+    width: 100px;
+    height: 100px;
+    margin-top: 40px;
+    margin-left: 250px;
 }
 
-.tabla_Container{
-    justify-content: center;
-    width: 50%;
-    background-color: red;
-    display: flex;
+.eliminar_movimiento{
+    width: 80px;
+    margin-top: -100px;
+    margin-left: 460px;   
+}
+
+.modificar_boton{
+    border-color: white;
+    background-color: rgb(147, 210, 58);
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 5px;
+    height: 50px;
+    width: 120px;
+    font-weight: bold;
+    font-size: 13px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    margin-left: 120px;
+}
+
+.eliminar_boton{
+    border-color: white;
+    background-color: rgb(210, 58, 78);
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 5px;
+    height: 50px;
+    width: 120px;
+    font-weight: bold;
+    font-size: 13px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    margin-left: 80px;
+}
+
+.imagen_movimientos_pag{
+    width:200px;
+    height:100px;
+    margin-top: -100px;
+    margin-left: 700px;
 }
