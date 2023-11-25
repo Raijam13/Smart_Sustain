@@ -18,14 +18,20 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import { useRouter } from 'next/navigation';
+import Crear from '../../api/crearfamilia.js'
 
 function CrearFamilia(props) {
     const [mostrarAlerta, setMostrarAlerta] = useState(false);
     const router = useRouter();
+    const storedUserData = localStorage.getItem('userData');
+    const datos = storedUserData ? JSON.parse(storedUserData) : null;
+
+    const [nombre, setNombre] = useState("")
+    const [desc, setDesc] = useState("")
     
     const handleCrearFamilia  = () => {
-        // Realiza la lógica o acción que desencadena la alerta
-        // Muestra la alerta durante 3 segundos
+        const id = datos.id
+        Crear(id, nombre, desc)
         
         setMostrarAlerta(true);
         setTimeout(() => {
@@ -54,6 +60,7 @@ function CrearFamilia(props) {
                   placeholder="Escribir apodo"  
                   id="apodo"
                   autoFocus
+                  onChange={event => setNombre(event.target.value)}
                 />
               </Form.Group>
               <Form.Group >
@@ -63,7 +70,7 @@ function CrearFamilia(props) {
               as="textarea" 
               placeholder="Escribir una pequeña descripción "  
               id="descripcion"
-              rows={3} />
+              rows={3} onChange={event => setDesc(event.target.value)}/>
             </Form.Group>
             </Form>
           </Modal.Body>
@@ -93,8 +100,7 @@ function CrearFamilia(props) {
     const router = useRouter();
     
     const handleUnirFamilia  = () => {
-        // Realiza la lógica o acción que desencadena la alerta
-        // Muestra la alerta durante 3 segundos
+        
         
         setMostrarAlerta(true);
         setTimeout(() => {
