@@ -8,10 +8,11 @@ import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import objetivosApi from '../../api/objetivos.js'
 import React from 'react'
 
-function  crearObjetivos  (props)  {
+function  CrearObjetivos  (props)  {
     return(
         <Modal
              {...props}
@@ -57,6 +58,17 @@ function  crearObjetivos  (props)  {
 const objetivos  = () => {
 
     const [modalShow, setModalShow] = React.useState(false);
+    const [tabla,setTabla] = useState(0)
+
+
+    useEffect(() => {
+    
+        const storedUserData = localStorage.getItem('userData');
+        const datos = storedUserData ? JSON.parse(storedUserData): null;
+        setTabla(objetivosApi(datos.id));
+
+    
+    },[]);
 
 
     return(
@@ -86,7 +98,8 @@ const objetivos  = () => {
                              <div className={Styles.botonGroup}>
                                 <Button onClick={() => setModalShow(true)}  className={Styles.botones}>Crear Objetivos</Button>
                             </div>  
-                            <crearObjetivos
+                            
+                            <CrearObjetivos
                             show={modalShow}
                             onHide={() => setModalShow(false)}
                             />
@@ -101,9 +114,11 @@ const objetivos  = () => {
                             <tr>
                                 <th>Nombre Meta</th>
                                 <th>Monto</th>
-                                
+                                <th>Cantidad Alcanzada</th>
+                                <th>Fecha de Inicio</th>
+                                <th>Fecha de Fin</th>
                             </tr>
-                            <p> nombre</p>
+                           
                          </Table>
                         </div>
                         

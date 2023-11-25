@@ -10,7 +10,7 @@ import background from '../Imagenes/background.jpg';
 import { useState } from 'react';
 
 
-const notificaciones = () => {
+const notificaciones = (id) => {
 
 
   const [celdas, setCeldas] = useState();
