@@ -13,9 +13,15 @@ import Image from 'next/image';
 import Barra_superior from '../../components/barra/barra_superior';
 import Barra_inferior from '../../components/barra/barra_inferior';
 import Card from 'react-bootstrap/Card';
-import cargarperfil from '../../api/perfil.js'
+import cargarCategoria from '../../api/categoria';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import { useRouter } from 'next/navigation';
+import Crear from '../../api/crearCategoria';
+import ModificarCategoria from '../../api/cambiarCategoria'
+import cambiarCategoria from '../../api/cambiarCategoria';
+
+let id = JSON.parse( localStorage.getItem('userData')).id
 
 function EditarCategoria(props) {
   return (
@@ -43,7 +49,13 @@ function EditarCategoria(props) {
           <Button className={Styles.botones_recuadro} onClick={props.onHide}>
             Cerrar
           </Button>
-          <Button className={Styles.botones_recuadro}>
+          <Button className={Styles.botones_recuadro} 
+          onClick={function(){
+            const input = document.getElementById("categoria") as HTMLInputElement
+            let nombres = input.value
+            cambiarCategoria(id, nombres)
+            props.onHide();
+          }}>
             Guardar cambios
           </Button>
         </Modal.Footer>
@@ -82,6 +94,15 @@ function EliminarCategoria(props) {
 }
 
 function CrearCategoria(props) {
+  const storedUserData = localStorage.getItem('userData');
+  const datos = storedUserData ? JSON.parse(storedUserData) : null;
+
+  const [nombreCategoria, setNombreCategoria] = useState("")
+
+  const handleCrearCategoria  = () => {
+    const usuario_id = datos.id
+    Crear(usuario_id,nombreCategoria)
+  };
   return (
       <Modal
         {...props}
@@ -99,6 +120,7 @@ function CrearCategoria(props) {
               <Form.Control
                 placeholder="Escribir nombre de la categoría"  id="categoria"
                 autoFocus
+                onChange={event => setNombreCategoria(event.target.value)}
               />
             </Form.Group>
             <Form.Group>
@@ -111,7 +133,7 @@ function CrearCategoria(props) {
           <Button className={Styles.botones_recuadro} onClick={props.onHide}>
             Cerrar
           </Button>
-          <Button className={Styles.botones_recuadro}>
+          <Button className={Styles.botones_recuadro} onClick={handleCrearCategoria}>
             Guardar cambios
           </Button>
         </Modal.Footer>
@@ -121,7 +143,7 @@ function CrearCategoria(props) {
 
 const Categorias = () => {
 
-  const [nombre, setNombre] = useState("")
+  const [categoria, setCategoria] = useState("")
 
   //Editar categorías
   const [modalShow, setModalShow] = React.useState(false);
@@ -144,8 +166,8 @@ const Categorias = () => {
     const storedUserData = localStorage.getItem('userData');
     const datos = storedUserData ? JSON.parse(storedUserData) : null;
     id = datos.id
-    cargarperfil(id).then(user =>{
-        setNombre(user.nombre)
+    cargarCategoria(id).then(user =>{
+        setCategoria(user.nombre)
     }
     )
   })
@@ -178,7 +200,7 @@ const Categorias = () => {
                           <Card className= {Styles.card_categoria}>
                           <Card.Body className={`d-flex justify-content-between align-items-center`}>
                             <i className={`bi bi-cookie ${Styles.icono_categoria}`}></i>
-                            <span className="ml-2">Alimento</span>
+                            <span className="ml-2">{categoria}</span>
                             <i  
                             onMouseOver={(e) => e.currentTarget.style.cursor = "pointer"}
                             onMouseOut={(e) => e.currentTarget.style.cursor = "default"}
