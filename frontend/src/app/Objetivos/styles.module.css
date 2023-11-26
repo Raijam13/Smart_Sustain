@@ -24,6 +24,8 @@
     position: fixed;
 }
 
+<<<<<<< HEAD
+=======
 .barra_superior{
     position: fixed;
     display: flex;
@@ -133,4 +135,137 @@
     height:100px;
     margin-top: -100px;
     margin-left: 700px;
+}
+
+>>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
+.barra_superior{
+    position: fixed;
+    display: flex;
+    width: 221vh;
+    height: 100vh;
+}
+
+.barra_inferior{
+    margin-top: 650px;
+    position: fixed;
+    display: flex;
+    width: 221vh;
+    height: 100vh;
+    margin-left: 0px;
+}
+
+.title_login p{
+    font-size: 30px;
+    color:rgb(0, 0, 0);
+    margin-left: 0px;
+    margin-top: 40px;
+    text-align: center;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.title2_login p{
+    font-size: 20px;
+    color:rgb(0, 0, 0);
+    margin-left: 30px;
+    margin-top: 40px;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title3_login p{
+    font-size: 20px;
+    color:rgb(0, 0, 0);
+    margin-left: 30px;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tabla_datos{
+    width: 600px;
+    margin-left: 230px;
+    align-items: center;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+<<<<<<< HEAD
+.tabla_datos tr, .tabla_datos th{
+    border: solid;
+    border-color: black 1px;
+}
+=======
+>>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
+
+.tabla_datos th{
+    background-color: rgb(246, 211, 33);
+<<<<<<< HEAD
+}
+
+.modificar_movimiento{
+    width: 100px;
+    height: 100px;
+    margin-top: 40px;
+    margin-left: 250px;
+}
+
+.eliminar_movimiento{
+    width: 80px;
+    margin-top: -100px;
+    margin-left: 460px;   
+}
+
+.modificar_boton{
+    border-color: white;
+    background-color: rgb(147, 210, 58);
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 5px;
+    height: 50px;
+    width: 120px;
+    font-weight: bold;
+    font-size: 13px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    margin-left: 120px;
+}
+
+.eliminar_boton{
+    border-color: white;
+    background-color: rgb(210, 58, 78);
+    text-align: center;
+    align-items: center;
+    width: 30%;
+    border-radius: 5px;
+    height: 50px;
+    width: 120px;
+    font-weight: bold;
+    font-size: 13px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+    margin-left: 80px;
+}
+
+.imagen_movimientos_pag{
+    width:200px;
+    height:100px;
+    margin-top: -100px;
+    margin-left: 700px;
+=======
+    padding: 10px;
+    width: 300px;
+    border: black solid 3px;
+}
+
+.tabla tr{
+    width: 100%;
+}
+
+.tabla_Container{
+    justify-content: center;
+    width: 70%;
+    background-color: red;
+    display: flex;
+    height: 50%;
+>>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
 }
