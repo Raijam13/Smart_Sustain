@@ -329,6 +329,9 @@ def userregister(request):
             if u.email == mail:
                 resp = {"resp" : "email_taken"}
                 return HttpResponse(json.dumps(resp))
+        if type(mail).__name__!='str':
+            resp = {"resp" : "not_an_email"}
+            return HttpResponse(json.dumps(resp))
         usuario = Usuario(nombre = name, apellido = surname, email = mail, password = passw)
         usuario.save()
         resp = {"resp" : "register_successful"}
