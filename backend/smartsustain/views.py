@@ -272,7 +272,7 @@ def obtenermovimientos(request):
         for m in MovimientosQuerySet:
             lista.append({
                 "usuario" : m.usuario.nombre,
-                "categoria" : "N/A",
+                "categoria" : m.categoria.nombre,
                 "cantidad" : m.cantidad,
                 "fecha" : str(m.fecha),
                 "id" : m.pk

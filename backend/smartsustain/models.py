@@ -36,7 +36,7 @@ class Categoria(models.Model):
           
 class Movimiento(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    #categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, default=1)
     cantidad = models.FloatField()
     fecha = models.CharField(max_length=20)
 
