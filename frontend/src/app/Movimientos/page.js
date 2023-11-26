@@ -11,6 +11,7 @@ import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { useEffect, useState } from 'react';
 import peticion from '../../api/Movimientos.js'
+import recomendacion from '../../api/recomendaciones.js'
 import MovTotal from '../../api/MovimientosTotal.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartSimple, faMoneyCheckDollar, faFileInvoiceDollar} from "@fortawesome/free-solid-svg-icons";
@@ -68,9 +69,11 @@ const movimientos = () => {
     let tabla = await peticion()*/
     const [tabla, setTabla] = useState([])
     const [total, setTotal] = useState(0)
+    const [rec, setRec] = useState("")
 
     useEffect(() => {
-        
+        setRec(recomendacion())
+        console.log(rec)
         const storedUserData = localStorage.getItem('userData');
         const datos = storedUserData ? JSON.parse(storedUserData) : null;
         setTabla(peticion(datos.id))
@@ -104,6 +107,9 @@ const movimientos = () => {
                             src={logo_movimientos}
                             alt="logo_movimientos"
                         /> 
+                    </Col>
+                    <Col>
+                    <b>Tip:</b> {rec}
                     </Col>
                     <Col className={Styles.title2_login}>
                          <p><FontAwesomeIcon icon={faFileInvoiceDollar} /><strong>  Lista de movimientos: </strong></p>

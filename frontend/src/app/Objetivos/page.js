@@ -1,16 +1,24 @@
-'use client'
+'use client';
 import Styles from './styles.module.css'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col';
+import 'bootstrap/dist/css/bootstrap.css'
+import Container from 'react-bootstrap/esm/Container';
 import Barra_superior from '../../components/barra/barra_superior';
 import Barra_inferior from '../../components/barra/barra_inferior';
-import Button from 'react-bootstrap/Button'
-import Table from 'react-bootstrap/Table'
+import Image from 'next/image';
+import background from '../Imagenes/background.jpg'
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
+import { useEffect, useState } from 'react';
+import peticion from '../../api/objetivos.js'
+import MovTotal from '../../api/MovimientosTotal.js'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartSimple, faMoneyCheckDollar, faFileInvoiceDollar} from "@fortawesome/free-solid-svg-icons";
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/esm/Button';
+import logo_movimientos from "../Imagenes/logo_movimientos.jpg";
 import Modal from 'react-bootstrap/Modal'
-import Form from 'react-bootstrap/Form'
-import { useState, useEffect } from 'react';
-import objetivosApi from '../../api/objetivos.js'
 import React from 'react'
+import Form from 'react-bootstrap/Form'
 
 function  CrearObjetivos  (props)  {
     return(
@@ -54,48 +62,40 @@ function  CrearObjetivos  (props)  {
 }
 
 
-
-const objetivos  = () => {
-
+const movimientos = () => {
+    /*let usuarioCache= cache()
+    let tabla = await peticion()*/
+    const [tabla, setTabla] = useState([])
     const [modalShow, setModalShow] = React.useState(false);
-    const [tabla,setTabla] = useState(0)
-
 
     useEffect(() => {
-    
         const storedUserData = localStorage.getItem('userData');
-        const datos = storedUserData ? JSON.parse(storedUserData): null;
-        setTabla(objetivosApi(datos.id));
+        const datos = storedUserData ? JSON.parse(storedUserData) : null;
+        setTabla(peticion(datos.id))
 
-    
-    },[]);
-
-
-    return(
-        <div className={Styles.render}>
-            
-                 <Barra_superior></Barra_superior>
-            
-            <div className={Styles.content}>
-
-                <div className={Styles.panel}>
-
-                      
-                         <h1 className={Styles.titulos}> Objetivos Financieros </h1>
-                        
-
-                        <div className={Styles.navegacion}>
-
-                            <div className={Styles.contador}>
-                                <h5>
-                                    Objetivos Completados
-                                </h5>
-                                <h5>
-                                    0% 
-                                </h5>
-                            </div>
-
-                             <div className={Styles.botonGroup}>
+    }, []);
+ 
+    return( 
+        <Container fluid className={Styles.Login}>
+            <Image
+                src={background}
+                alt="fondo_login"
+                layout='fill'
+                objectFit='cover'
+                />
+            <Row className={Styles.barra_superior}>
+                  <Barra_superior></Barra_superior>
+            </Row>
+            <Col md={{ span: 2, offset: 2 }} className={Styles.create_inicio}>
+                    <Col className={Styles.title_login}>
+                         <p><FontAwesomeIcon icon={faChartSimple}/>  Mis Objetivos</p>
+                    </Col>
+                    <Col>
+                        <Image className= {Styles.imagen_movimientos_pag}
+                            src={logo_movimientos}
+                            alt="logo_movimientos"
+                        /> 
+                        <div className={Styles.botonGroup}>
                                 <Button onClick={() => setModalShow(true)}  className={Styles.botones}>Crear Objetivos</Button>
                             </div>  
                             
@@ -103,36 +103,33 @@ const objetivos  = () => {
                             show={modalShow}
                             onHide={() => setModalShow(false)}
                             />
-                            
-
-
-
-                        </div>
-
-                        <div className={Styles.tabla_Container}>
-                         <Table className={Styles.tabla}>
+                    </Col>
+                    <Col>
+                        <Table className={Styles.tabla_datos}>
                             <tr>
-                                <th>Nombre Meta</th>
-                                <th>Monto</th>
-                                <th>Cantidad Alcanzada</th>
-                                <th>Fecha de Inicio</th>
-                                <th>Fecha de Fin</th>
-                            </tr>
-                           
-                         </Table>
-                        </div>
-                        
-                </div>
-
-            </div>
-
-
-
-
-        </div>
-    )
+                                <th>Nombre</th>
+                                <th>Deseado</th>
+                                <th>Alcanzado</th>
+                                <th>Desde</th>
+                                <th>Hasta</th>
+                            </tr> 
+                            {tabla} 
+                        </Table>
+                    </Col>
+                    <Col className={Styles.modificar_movimiento}>
+                            <Button className= {Styles.modificar_boton}>Modificar objetivo</Button>{' '}
+                        </Col>
+                        <Col className={Styles.eliminar_movimiento}>
+                            <Button  className= {Styles.eliminar_boton}>Eliminar objetivo</Button>{' '}
+                    </Col>
+            </Col>
+            <Row className={Styles.barra_inferior}>
+                  <Barra_inferior></Barra_inferior>
+            </Row>
+        </Container>
 
     
+    )
 }
 
-export default objetivos;
+export default movimientos;
