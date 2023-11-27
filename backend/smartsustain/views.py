@@ -410,7 +410,8 @@ def eliminarcuenta(request):
 def crearmovimiento(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        user = Usuario.objects.filter(pk=data["usuario"])[0]
+        user_found = False
+        user = Usuario.objects.get(pk=data["usuario"])[0]
         cant = data["cantidad"]
         date = data["fecha"]
         mov = Movimiento(usuario = user, cantidad = cant, fecha = date)
