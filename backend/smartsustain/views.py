@@ -411,8 +411,15 @@ def crearmovimiento(request):
     if request.method == "POST":
         data = json.loads(request.body)
         user_found = False
-        user = Usuario.objects.get(pk=data["usuario"])[0]
+        UsuariosQuerySet = Usuario.objects.filter(pk=data["usuario"])
+        if len(UsuariosQuerySet) > 0 :
+            user = UsuariosQuerySet[0]
+            user_found = True
+        else:
+            return HttpResponse(json.dumps({"resp" : "user_not_found"}))
         cant = data["cantidad"]
+        if type(cant).__name__ != float:
+            return HttpResponse(json.dumps({"resp" : "invalid_amount"}))
         date = data["fecha"]
         mov = Movimiento(usuario = user, cantidad = cant, fecha = date)
         mov.save()
