@@ -139,7 +139,7 @@ def visualizar_gastos_familiares(request):
             gastos_familia = Movimiento.objects.filter(usuario_id__in=usuario_ids)
 
             # Convertir gastos a formato JSON
-            gastos_data = [{'usuario': gasto.usuario.nombre, 'cantidad': gasto.cantidad, 'fecha': str(gasto.fecha)} for gasto in gastos_familia]
+            gastos_data = [{'usuario': gasto.usuario.nombre, 'cantidad': gasto.cantidad, 'fecha': str(gasto.fecha), 'categoria' : str(gasto.categoria.nombre)} for gasto in gastos_familia]
 
             # Retorna los gastos como respuesta JSON
             return JsonResponse({'gastos_familiares': gastos_data})
