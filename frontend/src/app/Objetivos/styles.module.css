@@ -24,8 +24,6 @@
     position: fixed;
 }
 
-<<<<<<< HEAD
-=======
 .barra_superior{
     position: fixed;
     display: flex;
@@ -137,7 +135,6 @@
     margin-left: 700px;
 }
 
->>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
 .barra_superior{
     position: fixed;
     display: flex;
@@ -188,17 +185,13 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-<<<<<<< HEAD
 .tabla_datos tr, .tabla_datos th{
     border: solid;
     border-color: black 1px;
 }
-=======
->>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
 
 .tabla_datos th{
     background-color: rgb(246, 211, 33);
-<<<<<<< HEAD
 }
 
 .modificar_movimiento{
@@ -251,7 +244,6 @@
     height:100px;
     margin-top: -100px;
     margin-left: 700px;
-=======
     padding: 10px;
     width: 300px;
     border: black solid 3px;
@@ -267,5 +259,4 @@
     background-color: red;
     display: flex;
     height: 50%;
->>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
 }
