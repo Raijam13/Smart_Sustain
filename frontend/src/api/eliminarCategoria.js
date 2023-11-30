@@ -1,11 +1,10 @@
-const crearCategoria = async (usuario_id, nombre_categoria) => {
+const eliminarCategoria = async (categoria_id) => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/smartsustain/crear_categoria', {
+      const response = await fetch('http://127.0.0.1:8000/smartsustain/eliminar_categoria', {
         method: 'POST',
         cache: 'no-store',
         body: JSON.stringify({
-          usuario_id: usuario_id,  
-          nombre_categoria: nombre_categoria,
+          categoria_id: categoria_id,
         }),
       });
   
@@ -17,4 +16,4 @@ const crearCategoria = async (usuario_id, nombre_categoria) => {
     }
   };
   
-  export default crearCategoria;
+  export default eliminarCategoria;
