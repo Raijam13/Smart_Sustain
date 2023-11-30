@@ -139,7 +139,7 @@ def visualizar_gastos_familiares(request):
             gastos_familia = Movimiento.objects.filter(usuario_id__in=usuario_ids)
 
             # Convertir gastos a formato JSON
-            gastos_data = [{'usuario': gasto.usuario.nombre, 'cantidad': gasto.cantidad, 'fecha': str(gasto.fecha)} for gasto in gastos_familia]
+            gastos_data = [{'usuario': gasto.usuario.nombre, 'cantidad': gasto.cantidad, 'fecha': str(gasto.fecha), 'categoria' : str(gasto.categoria.nombre)} for gasto in gastos_familia]
 
             # Retorna los gastos como respuesta JSON
             return JsonResponse({'gastos_familiares': gastos_data})
@@ -272,7 +272,7 @@ def obtenermovimientos(request):
         for m in MovimientosQuerySet:
             lista.append({
                 "usuario" : m.usuario.nombre,
-                "categoria" : "N/A",
+                "categoria" : m.categoria.nombre,
                 "cantidad" : m.cantidad,
                 "fecha" : str(m.fecha),
                 "id" : m.pk
@@ -329,6 +329,9 @@ def userregister(request):
             if u.email == mail:
                 resp = {"resp" : "email_taken"}
                 return HttpResponse(json.dumps(resp))
+        if type(mail).__name__!='str':
+            resp = {"resp" : "not_an_email"}
+            return HttpResponse(json.dumps(resp))
         usuario = Usuario(nombre = name, apellido = surname, email = mail, password = passw)
         usuario.save()
         resp = {"resp" : "register_successful"}
@@ -407,8 +410,16 @@ def eliminarcuenta(request):
 def crearmovimiento(request):
     if request.method == "POST":
         data = json.loads(request.body)
-        user = Usuario.objects.filter(pk=data["usuario"])[0]
+        user_found = False
+        UsuariosQuerySet = Usuario.objects.filter(pk=data["usuario"])
+        if len(UsuariosQuerySet) > 0 :
+            user = UsuariosQuerySet[0]
+            user_found = True
+        else:
+            return HttpResponse(json.dumps({"resp" : "user_not_found"}))
         cant = data["cantidad"]
+        if type(cant).__name__ != float:
+            return HttpResponse(json.dumps({"resp" : "invalid_amount"}))
         date = data["fecha"]
         mov = Movimiento(usuario = user, cantidad = cant, fecha = date)
         mov.save()

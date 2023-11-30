@@ -9,24 +9,87 @@ import background from '../Imagenes/background.jpg'
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import peticion from '../../api/Objetivos.js'
+=======
+import peticion from '../../api/objetivos.js'
+>>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
 import MovTotal from '../../api/MovimientosTotal.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartSimple, faMoneyCheckDollar, faFileInvoiceDollar} from "@fortawesome/free-solid-svg-icons";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/esm/Button';
 import logo_movimientos from "../Imagenes/logo_movimientos.jpg";
+<<<<<<< HEAD
 
 const movimientos = () => {
     /*let usuarioCache= cache()
     let tabla = await peticion()*/
     const [tabla, setTabla] = useState([])
+=======
+import Modal from 'react-bootstrap/Modal'
+import React from 'react'
+import Form from 'react-bootstrap/Form'
+
+function  CrearObjetivos  (props)  {
+    return(
+        <Modal
+             {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+                <Modal.Header>
+                    <Modal.Title>Agregar un Objetivo</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Nombre del Objetivo</Form.Label>
+                            <Form.Control
+                            id='nombreObjetivo'
+                            autoFocus
+                            />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Monto de la Meta</Form.Label>
+                            <Form.Control
+                            id='monto'
+                            />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                 <Button onClick={props.onHide}>
+                         Cerrar
+                          </Button>
+                 <Button className={Styles.boton_crear}>
+                          Crear Objetivo
+                 </Button>
+                </Modal.Footer>
+        </Modal>
+>>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
 
     useEffect(() => {
         const storedUserData = localStorage.getItem('userData');
         const datos = storedUserData ? JSON.parse(storedUserData) : null;
         setTabla(peticion(datos.id))
 
+<<<<<<< HEAD
+=======
+
+const movimientos = () => {
+    /*let usuarioCache= cache()
+    let tabla = await peticion()*/
+    const [tabla, setTabla] = useState([])
+    const [modalShow, setModalShow] = React.useState(false);
+
+    useEffect(() => {
+        const storedUserData = localStorage.getItem('userData');
+        const datos = storedUserData ? JSON.parse(storedUserData) : null;
+        setTabla(peticion(datos.id))
+
+>>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
     }, []);
  
     return( 
@@ -49,6 +112,17 @@ const movimientos = () => {
                             src={logo_movimientos}
                             alt="logo_movimientos"
                         /> 
+<<<<<<< HEAD
+=======
+                        <div className={Styles.botonGroup}>
+                                <Button onClick={() => setModalShow(true)}  className={Styles.botones}>Crear Objetivos</Button>
+                            </div>  
+                            
+                            <CrearObjetivos
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                            />
+>>>>>>> b55f1bd27a85b5a06def56f02c2e7c9df6a671c2
                     </Col>
                     <Col>
                         <Table className={Styles.tabla_datos}>
