@@ -16,16 +16,13 @@ import Card from 'react-bootstrap/Card';
 import cargarCategoria from '../../api/categoria';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-<<<<<<< HEAD
 import Crear_Categoria from '../../api/crearCategoria.js';
-=======
 import { useRouter } from 'next/navigation';
 import Crear from '../../api/crearCategoria';
-import ModificarCategoria from '../../api/cambiarCategoria'
+import ModificarCategoria from '../../api/cambiarCategoria';
 import cambiarCategoria from '../../api/cambiarCategoria';
 
 let id = JSON.parse( localStorage.getItem('userData')).id
->>>>>>> dc1a7c4c65ca194a3517514d0f2395b430afecb1
 
 function EditarCategoria(props) {
   return (
