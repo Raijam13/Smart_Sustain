@@ -61,7 +61,7 @@ function  CrearObjetivos  (props)  {
     
     )}
 
-const movimientos = () => {
+const objetivos = () => {
     /*let usuarioCache= cache()
     let tabla = await peticion()*/
     const [tabla, setTabla] = useState([])
@@ -131,4 +131,4 @@ const movimientos = () => {
     )
 }
 
-export default movimientos
+export default objetivos

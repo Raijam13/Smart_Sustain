@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import models
 from django.contrib.auth.models import User
 
 class Familia(models.Model):
@@ -54,10 +53,6 @@ class Objetivo(models.Model):
     
     def __str__(self):
         return self.nombre
-    
-# models.py
-from django.db import models
-
 
 class UsuarioXFamilia(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
